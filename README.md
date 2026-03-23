@@ -1,39 +1,41 @@
 # RIXL Go SDK
 
-This repository contains the Go SDK split by service instead of one flat generated client.
+Welcome to the official RIXL Go SDK. This package provides a service-oriented interface for interacting with the RIXL API, organized into discrete modules for Feeds, Videos, and Images.
 
-## Layout
+## Packages
 
-- `sdk/feeds`
-- `sdk/videos`
-- `sdk/images`
+The SDK is structured into service-specific packages to minimize dependency overhead:
 
-Each service folder contains its own generated Go package. The root `go.mod` keeps the module path stable for all service imports.
+- **Feeds**: `github.com/qeeqez/rixl-sdk-go/sdk/feeds` — Access and manage community feeds.
+- **Videos**: `github.com/qeeqez/rixl-sdk-go/sdk/videos` — High-performance video processing and retrieval.
+- **Images**: `github.com/qeeqez/rixl-sdk-go/sdk/images` — Image upload and transformation services.
 
-## Import Examples
+## Installation
+
+Install the desired service packages using `go get`:
+
+```bash
+go get github.com/qeeqez/rixl-sdk-go/sdk/feeds
+go get github.com/qeeqez/rixl-sdk-go/sdk/videos
+go get github.com/qeeqez/rixl-sdk-go/sdk/images
+```
+
+## Basic Usage
+
+Individual services can be imported and instantiated as needed:
 
 ```go
-import feeds "github.com/qeeqez/rixl-sdk-go/sdk/feeds"
-import videos "github.com/qeeqez/rixl-sdk-go/sdk/videos"
-import images "github.com/qeeqez/rixl-sdk-go/sdk/images"
+import (
+    "github.com/qeeqez/rixl-sdk-go/sdk/feeds"
+    "github.com/qeeqez/rixl-sdk-go/sdk/videos"
+)
+
+func main() {
+    // feedsClient := feeds.NewAPIClient(feeds.NewConfiguration())
+    // videosClient := videos.NewAPIClient(videos.NewConfiguration())
+}
 ```
 
-## Regenerate
+## Support
 
-Generate all services:
-
-```sh
-./scripts/generate.sh
-```
-
-Generate one service:
-
-```sh
-./scripts/generate.sh --service videos
-```
-
-Regenerate from a fresh OpenAPI file:
-
-```sh
-./scripts/generate.sh --spec /path/to/public.swagger.json --service images
-```
+For issues, bug reports, or feature requests, please open an issue in the official GitHub repository.

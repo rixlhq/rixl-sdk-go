@@ -21,62 +21,12 @@ import (
 )
 
 
-type FeedsAPI interface {
-
-	/*
-	GetFeedsFeedId List posts in a feed
-
-	Retrieve posts in a feed, with pagination.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param feedId Feed ID
-	@return ApiGetFeedsFeedIdRequest
-	*/
-	GetFeedsFeedId(ctx context.Context, feedId string) ApiGetFeedsFeedIdRequest
-
-	// GetFeedsFeedIdExecute executes the request
-	//  @return PaginationPaginatedResponsePost
-	GetFeedsFeedIdExecute(r ApiGetFeedsFeedIdRequest) (*PaginationPaginatedResponsePost, *http.Response, error)
-
-	/*
-	GetFeedsFeedIdCreatorsCreatorId List posts by creator
-
-	Retrieve posts in a feed by a specific creator, with pagination.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param feedId Feed ID
-	@param creatorId Creator ID
-	@return ApiGetFeedsFeedIdCreatorsCreatorIdRequest
-	*/
-	GetFeedsFeedIdCreatorsCreatorId(ctx context.Context, feedId string, creatorId string) ApiGetFeedsFeedIdCreatorsCreatorIdRequest
-
-	// GetFeedsFeedIdCreatorsCreatorIdExecute executes the request
-	//  @return PaginationPaginatedResponsePost
-	GetFeedsFeedIdCreatorsCreatorIdExecute(r ApiGetFeedsFeedIdCreatorsCreatorIdRequest) (*PaginationPaginatedResponsePost, *http.Response, error)
-
-	/*
-	GetFeedsFeedIdPostId Get a post
-
-	Retrieve a post from feed by its ID
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param feedId Feed ID
-	@param postId Post ID
-	@return ApiGetFeedsFeedIdPostIdRequest
-	*/
-	GetFeedsFeedIdPostId(ctx context.Context, feedId string, postId string) ApiGetFeedsFeedIdPostIdRequest
-
-	// GetFeedsFeedIdPostIdExecute executes the request
-	//  @return Post
-	GetFeedsFeedIdPostIdExecute(r ApiGetFeedsFeedIdPostIdRequest) (*Post, *http.Response, error)
-}
-
 // FeedsAPIService FeedsAPI service
 type FeedsAPIService service
 
 type ApiGetFeedsFeedIdRequest struct {
 	ctx context.Context
-	ApiService FeedsAPI
+	ApiService *FeedsAPIService
 	feedId string
 	limit *int32
 	offset *int32
@@ -228,7 +178,7 @@ func (a *FeedsAPIService) GetFeedsFeedIdExecute(r ApiGetFeedsFeedIdRequest) (*Pa
 
 type ApiGetFeedsFeedIdCreatorsCreatorIdRequest struct {
 	ctx context.Context
-	ApiService FeedsAPI
+	ApiService *FeedsAPIService
 	feedId string
 	creatorId string
 	limit *int32
@@ -384,7 +334,7 @@ func (a *FeedsAPIService) GetFeedsFeedIdCreatorsCreatorIdExecute(r ApiGetFeedsFe
 
 type ApiGetFeedsFeedIdPostIdRequest struct {
 	ctx context.Context
-	ApiService FeedsAPI
+	ApiService *FeedsAPIService
 	feedId string
 	postId string
 }

@@ -22,10 +22,7 @@ var _ MappedNullable = &InternalImagesHandlerCompleteRequest{}
 type InternalImagesHandlerCompleteRequest struct {
 	AttachedToVideo *bool `json:"attached_to_video,omitempty"`
 	ImageId *string `json:"image_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _InternalImagesHandlerCompleteRequest InternalImagesHandlerCompleteRequest
 
 // NewInternalImagesHandlerCompleteRequest instantiates a new InternalImagesHandlerCompleteRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o InternalImagesHandlerCompleteRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.ImageId) {
 		toSerialize["image_id"] = o.ImageId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *InternalImagesHandlerCompleteRequest) UnmarshalJSON(data []byte) (err error) {
-	varInternalImagesHandlerCompleteRequest := _InternalImagesHandlerCompleteRequest{}
-
-	err = json.Unmarshal(data, &varInternalImagesHandlerCompleteRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InternalImagesHandlerCompleteRequest(varInternalImagesHandlerCompleteRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "attached_to_video")
-		delete(additionalProperties, "image_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableInternalImagesHandlerCompleteRequest struct {

@@ -30,10 +30,7 @@ type Post struct {
 	Type *PostType `json:"type,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	Video *GithubComQeeqezApiInternalVideosVideoResponse `json:"video,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Post Post
 
 // NewPost instantiates a new Post object
 // This constructor will assign default values to properties that have it defined,
@@ -412,42 +409,7 @@ func (o Post) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Video) {
 		toSerialize["video"] = o.Video
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Post) UnmarshalJSON(data []byte) (err error) {
-	varPost := _Post{}
-
-	err = json.Unmarshal(data, &varPost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Post(varPost)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "creator_id")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "feed_id")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "image")
-		delete(additionalProperties, "plan_type")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "video")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePost struct {

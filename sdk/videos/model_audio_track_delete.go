@@ -22,10 +22,7 @@ var _ MappedNullable = &AudioTrackDelete{}
 type AudioTrackDelete struct {
 	Message *string `json:"message,omitempty"`
 	Status *string `json:"status,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioTrackDelete AudioTrackDelete
 
 // NewAudioTrackDelete instantiates a new AudioTrackDelete object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o AudioTrackDelete) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioTrackDelete) UnmarshalJSON(data []byte) (err error) {
-	varAudioTrackDelete := _AudioTrackDelete{}
-
-	err = json.Unmarshal(data, &varAudioTrackDelete)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AudioTrackDelete(varAudioTrackDelete)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "message")
-		delete(additionalProperties, "status")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioTrackDelete struct {

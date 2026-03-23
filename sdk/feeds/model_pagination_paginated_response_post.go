@@ -24,10 +24,7 @@ type PaginationPaginatedResponsePost struct {
 	Data []Post `json:"data,omitempty"`
 	// Pagination data for the request.
 	Pagination *PaginationPagination `json:"pagination,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PaginationPaginatedResponsePost PaginationPaginatedResponsePost
 
 // NewPaginationPaginatedResponsePost instantiates a new PaginationPaginatedResponsePost object
 // This constructor will assign default values to properties that have it defined,
@@ -126,34 +123,7 @@ func (o PaginationPaginatedResponsePost) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PaginationPaginatedResponsePost) UnmarshalJSON(data []byte) (err error) {
-	varPaginationPaginatedResponsePost := _PaginationPaginatedResponsePost{}
-
-	err = json.Unmarshal(data, &varPaginationPaginatedResponsePost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaginationPaginatedResponsePost(varPaginationPaginatedResponsePost)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "pagination")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePaginationPaginatedResponsePost struct {

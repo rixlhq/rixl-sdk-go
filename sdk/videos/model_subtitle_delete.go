@@ -22,10 +22,7 @@ var _ MappedNullable = &SubtitleDelete{}
 type SubtitleDelete struct {
 	Message *string `json:"message,omitempty"`
 	Status *string `json:"status,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SubtitleDelete SubtitleDelete
 
 // NewSubtitleDelete instantiates a new SubtitleDelete object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o SubtitleDelete) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SubtitleDelete) UnmarshalJSON(data []byte) (err error) {
-	varSubtitleDelete := _SubtitleDelete{}
-
-	err = json.Unmarshal(data, &varSubtitleDelete)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubtitleDelete(varSubtitleDelete)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "message")
-		delete(additionalProperties, "status")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSubtitleDelete struct {

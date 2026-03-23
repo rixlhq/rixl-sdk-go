@@ -26,10 +26,7 @@ type Image struct {
 	Id *string `json:"id,omitempty"`
 	Thumbhash *string `json:"thumbhash,omitempty"`
 	Width *int32 `json:"width,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Image Image
 
 // NewImage instantiates a new Image object
 // This constructor will assign default values to properties that have it defined,
@@ -268,38 +265,7 @@ func (o Image) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Width) {
 		toSerialize["width"] = o.Width
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Image) UnmarshalJSON(data []byte) (err error) {
-	varImage := _Image{}
-
-	err = json.Unmarshal(data, &varImage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Image(varImage)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "attached_to_video")
-		delete(additionalProperties, "file")
-		delete(additionalProperties, "height")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "thumbhash")
-		delete(additionalProperties, "width")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableImage struct {

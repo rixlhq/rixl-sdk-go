@@ -32,10 +32,7 @@ type GithubComQeeqezApiInternalVideosVideoResponse struct {
 	PlanType *GithubComQeeqezApiDbSqlcPlanType `json:"plan_type,omitempty"`
 	Poster *Image `json:"poster,omitempty"`
 	Width *int32 `json:"width,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GithubComQeeqezApiInternalVideosVideoResponse GithubComQeeqezApiInternalVideosVideoResponse
 
 // NewGithubComQeeqezApiInternalVideosVideoResponse instantiates a new GithubComQeeqezApiInternalVideosVideoResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -484,44 +481,7 @@ func (o GithubComQeeqezApiInternalVideosVideoResponse) ToMap() (map[string]inter
 	if !IsNil(o.Width) {
 		toSerialize["width"] = o.Width
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GithubComQeeqezApiInternalVideosVideoResponse) UnmarshalJSON(data []byte) (err error) {
-	varGithubComQeeqezApiInternalVideosVideoResponse := _GithubComQeeqezApiInternalVideosVideoResponse{}
-
-	err = json.Unmarshal(data, &varGithubComQeeqezApiInternalVideosVideoResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GithubComQeeqezApiInternalVideosVideoResponse(varGithubComQeeqezApiInternalVideosVideoResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "bitrate")
-		delete(additionalProperties, "chapters")
-		delete(additionalProperties, "codec")
-		delete(additionalProperties, "duration")
-		delete(additionalProperties, "file")
-		delete(additionalProperties, "framerate")
-		delete(additionalProperties, "hdr")
-		delete(additionalProperties, "height")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "plan_type")
-		delete(additionalProperties, "poster")
-		delete(additionalProperties, "width")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGithubComQeeqezApiInternalVideosVideoResponse struct {

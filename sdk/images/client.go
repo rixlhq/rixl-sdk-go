@@ -50,7 +50,7 @@ type APIClient struct {
 
 	// API Services
 
-	ImagesAPI ImagesAPI
+	ImagesAPI *ImagesAPIService
 }
 
 type service struct {

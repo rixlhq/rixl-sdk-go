@@ -50,7 +50,7 @@ type APIClient struct {
 
 	// API Services
 
-	FeedsAPI FeedsAPI
+	FeedsAPI *FeedsAPIService
 }
 
 type service struct {

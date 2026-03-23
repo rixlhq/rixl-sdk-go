@@ -22,10 +22,7 @@ var _ MappedNullable = &GithubComQeeqezApiInternalVideosTypesChapterInput{}
 type GithubComQeeqezApiInternalVideosTypesChapterInput struct {
 	StartTimeSec *float32 `json:"start_time_sec,omitempty"`
 	Title *string `json:"title,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GithubComQeeqezApiInternalVideosTypesChapterInput GithubComQeeqezApiInternalVideosTypesChapterInput
 
 // NewGithubComQeeqezApiInternalVideosTypesChapterInput instantiates a new GithubComQeeqezApiInternalVideosTypesChapterInput object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o GithubComQeeqezApiInternalVideosTypesChapterInput) ToMap() (map[string]i
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GithubComQeeqezApiInternalVideosTypesChapterInput) UnmarshalJSON(data []byte) (err error) {
-	varGithubComQeeqezApiInternalVideosTypesChapterInput := _GithubComQeeqezApiInternalVideosTypesChapterInput{}
-
-	err = json.Unmarshal(data, &varGithubComQeeqezApiInternalVideosTypesChapterInput)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GithubComQeeqezApiInternalVideosTypesChapterInput(varGithubComQeeqezApiInternalVideosTypesChapterInput)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "start_time_sec")
-		delete(additionalProperties, "title")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGithubComQeeqezApiInternalVideosTypesChapterInput struct {

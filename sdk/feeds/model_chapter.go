@@ -24,10 +24,7 @@ type Chapter struct {
 	EndTimeSec *float32 `json:"end_time_sec,omitempty"`
 	StartTimeSec *float32 `json:"start_time_sec,omitempty"`
 	Title *string `json:"title,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Chapter Chapter
 
 // NewChapter instantiates a new Chapter object
 // This constructor will assign default values to properties that have it defined,
@@ -196,36 +193,7 @@ func (o Chapter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Chapter) UnmarshalJSON(data []byte) (err error) {
-	varChapter := _Chapter{}
-
-	err = json.Unmarshal(data, &varChapter)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Chapter(varChapter)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "duration_label")
-		delete(additionalProperties, "end_time_sec")
-		delete(additionalProperties, "start_time_sec")
-		delete(additionalProperties, "title")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableChapter struct {

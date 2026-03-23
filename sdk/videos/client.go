@@ -50,7 +50,7 @@ type APIClient struct {
 
 	// API Services
 
-	VideosAPI VideosAPI
+	VideosAPI *VideosAPIService
 }
 
 type service struct {

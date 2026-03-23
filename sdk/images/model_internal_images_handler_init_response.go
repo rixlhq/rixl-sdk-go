@@ -23,10 +23,7 @@ type InternalImagesHandlerInitResponse struct {
 	ImageId *string `json:"image_id,omitempty"`
 	PresignedUrl *string `json:"presigned_url,omitempty"`
 	UploadExpires *int32 `json:"upload_expires,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _InternalImagesHandlerInitResponse InternalImagesHandlerInitResponse
 
 // NewInternalImagesHandlerInitResponse instantiates a new InternalImagesHandlerInitResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -160,35 +157,7 @@ func (o InternalImagesHandlerInitResponse) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.UploadExpires) {
 		toSerialize["upload_expires"] = o.UploadExpires
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *InternalImagesHandlerInitResponse) UnmarshalJSON(data []byte) (err error) {
-	varInternalImagesHandlerInitResponse := _InternalImagesHandlerInitResponse{}
-
-	err = json.Unmarshal(data, &varInternalImagesHandlerInitResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InternalImagesHandlerInitResponse(varInternalImagesHandlerInitResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image_id")
-		delete(additionalProperties, "presigned_url")
-		delete(additionalProperties, "upload_expires")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableInternalImagesHandlerInitResponse struct {

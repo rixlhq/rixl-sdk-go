@@ -21,10 +21,7 @@ var _ MappedNullable = &GithubComQeeqezApiInternalVideosHandlerUploadCompleteReq
 // GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest struct for GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest
 type GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest struct {
 	VideoId *string `json:"video_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest
 
 // NewGithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest instantiates a new GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest) ToMap() (m
 	if !IsNil(o.VideoId) {
 		toSerialize["video_id"] = o.VideoId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest) UnmarshalJSON(data []byte) (err error) {
-	varGithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest := _GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest{}
-
-	err = json.Unmarshal(data, &varGithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest(varGithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "video_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest struct {

@@ -29,10 +29,7 @@ type AudioTrack struct {
 	Size *int32 `json:"size,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VideoId *string `json:"video_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioTrack AudioTrack
 
 // NewAudioTrack instantiates a new AudioTrack object
 // This constructor will assign default values to properties that have it defined,
@@ -376,41 +373,7 @@ func (o AudioTrack) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VideoId) {
 		toSerialize["video_id"] = o.VideoId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioTrack) UnmarshalJSON(data []byte) (err error) {
-	varAudioTrack := _AudioTrack{}
-
-	err = json.Unmarshal(data, &varAudioTrack)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AudioTrack(varAudioTrack)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "format")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "label")
-		delete(additionalProperties, "language_code")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "size")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "video_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioTrack struct {

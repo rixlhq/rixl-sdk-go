@@ -29,10 +29,7 @@ type File struct {
 	Status *FileStatus `json:"status,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	Url *string `json:"url,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _File File
 
 // NewFile instantiates a new File object
 // This constructor will assign default values to properties that have it defined,
@@ -376,41 +373,7 @@ func (o File) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *File) UnmarshalJSON(data []byte) (err error) {
-	varFile := _File{}
-
-	err = json.Unmarshal(data, &varFile)
-
-	if err != nil {
-		return err
-	}
-
-	*o = File(varFile)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "format")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "project_id")
-		delete(additionalProperties, "size")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "url")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableFile struct {

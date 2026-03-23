@@ -22,10 +22,7 @@ var _ MappedNullable = &InternalVideosHandlerSubtitlesLanguageResponse{}
 type InternalVideosHandlerSubtitlesLanguageResponse struct {
 	Code *string `json:"code,omitempty"`
 	Name *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _InternalVideosHandlerSubtitlesLanguageResponse InternalVideosHandlerSubtitlesLanguageResponse
 
 // NewInternalVideosHandlerSubtitlesLanguageResponse instantiates a new InternalVideosHandlerSubtitlesLanguageResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o InternalVideosHandlerSubtitlesLanguageResponse) ToMap() (map[string]inte
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *InternalVideosHandlerSubtitlesLanguageResponse) UnmarshalJSON(data []byte) (err error) {
-	varInternalVideosHandlerSubtitlesLanguageResponse := _InternalVideosHandlerSubtitlesLanguageResponse{}
-
-	err = json.Unmarshal(data, &varInternalVideosHandlerSubtitlesLanguageResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InternalVideosHandlerSubtitlesLanguageResponse(varInternalVideosHandlerSubtitlesLanguageResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "code")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableInternalVideosHandlerSubtitlesLanguageResponse struct {

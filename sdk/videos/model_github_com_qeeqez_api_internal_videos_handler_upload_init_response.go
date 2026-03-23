@@ -25,10 +25,7 @@ type GithubComQeeqezApiInternalVideosHandlerUploadInitResponse struct {
 	UploadExpires *int32 `json:"upload_expires,omitempty"`
 	VideoId *string `json:"video_id,omitempty"`
 	VideoPresignedUrl *string `json:"video_presigned_url,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GithubComQeeqezApiInternalVideosHandlerUploadInitResponse GithubComQeeqezApiInternalVideosHandlerUploadInitResponse
 
 // NewGithubComQeeqezApiInternalVideosHandlerUploadInitResponse instantiates a new GithubComQeeqezApiInternalVideosHandlerUploadInitResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -232,37 +229,7 @@ func (o GithubComQeeqezApiInternalVideosHandlerUploadInitResponse) ToMap() (map[
 	if !IsNil(o.VideoPresignedUrl) {
 		toSerialize["video_presigned_url"] = o.VideoPresignedUrl
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GithubComQeeqezApiInternalVideosHandlerUploadInitResponse) UnmarshalJSON(data []byte) (err error) {
-	varGithubComQeeqezApiInternalVideosHandlerUploadInitResponse := _GithubComQeeqezApiInternalVideosHandlerUploadInitResponse{}
-
-	err = json.Unmarshal(data, &varGithubComQeeqezApiInternalVideosHandlerUploadInitResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GithubComQeeqezApiInternalVideosHandlerUploadInitResponse(varGithubComQeeqezApiInternalVideosHandlerUploadInitResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "poster_id")
-		delete(additionalProperties, "poster_presigned_url")
-		delete(additionalProperties, "upload_expires")
-		delete(additionalProperties, "video_id")
-		delete(additionalProperties, "video_presigned_url")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGithubComQeeqezApiInternalVideosHandlerUploadInitResponse struct {

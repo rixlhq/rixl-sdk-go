@@ -24,10 +24,7 @@ type PaginationPaginatedResponseVideo struct {
 	Data []Video `json:"data,omitempty"`
 	// Pagination data for the request.
 	Pagination *PaginationPagination `json:"pagination,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PaginationPaginatedResponseVideo PaginationPaginatedResponseVideo
 
 // NewPaginationPaginatedResponseVideo instantiates a new PaginationPaginatedResponseVideo object
 // This constructor will assign default values to properties that have it defined,
@@ -126,34 +123,7 @@ func (o PaginationPaginatedResponseVideo) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PaginationPaginatedResponseVideo) UnmarshalJSON(data []byte) (err error) {
-	varPaginationPaginatedResponseVideo := _PaginationPaginatedResponseVideo{}
-
-	err = json.Unmarshal(data, &varPaginationPaginatedResponseVideo)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaginationPaginatedResponseVideo(varPaginationPaginatedResponseVideo)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "pagination")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePaginationPaginatedResponseVideo struct {

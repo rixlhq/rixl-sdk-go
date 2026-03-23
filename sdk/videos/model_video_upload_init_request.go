@@ -13,6 +13,7 @@ package videos
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type VideoUploadInitRequest struct {
 	FileName string `json:"file_name"`
 	ImageFormat *string `json:"image_format,omitempty"`
 	VideoQuality *GithubComQeeqezApiDbSqlcVideoQuality `json:"video_quality,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _VideoUploadInitRequest VideoUploadInitRequest
@@ -152,11 +152,6 @@ func (o VideoUploadInitRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VideoQuality) {
 		toSerialize["video_quality"] = o.VideoQuality
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -184,22 +179,15 @@ func (o *VideoUploadInitRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varVideoUploadInitRequest := _VideoUploadInitRequest{}
 
-	err = json.Unmarshal(data, &varVideoUploadInitRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVideoUploadInitRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VideoUploadInitRequest(varVideoUploadInitRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "file_name")
-		delete(additionalProperties, "image_format")
-		delete(additionalProperties, "video_quality")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

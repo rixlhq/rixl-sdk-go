@@ -28,10 +28,7 @@ type Subtitle struct {
 	Size *int32 `json:"size,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VideoId *string `json:"video_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Subtitle Subtitle
 
 // NewSubtitle instantiates a new Subtitle object
 // This constructor will assign default values to properties that have it defined,
@@ -340,40 +337,7 @@ func (o Subtitle) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VideoId) {
 		toSerialize["video_id"] = o.VideoId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Subtitle) UnmarshalJSON(data []byte) (err error) {
-	varSubtitle := _Subtitle{}
-
-	err = json.Unmarshal(data, &varSubtitle)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Subtitle(varSubtitle)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "label")
-		delete(additionalProperties, "language_code")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "size")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "video_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSubtitle struct {

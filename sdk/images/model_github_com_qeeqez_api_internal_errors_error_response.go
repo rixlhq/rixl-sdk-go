@@ -26,10 +26,7 @@ type GithubComQeeqezApiInternalErrorsErrorResponse struct {
 	Details *string `json:"details,omitempty"`
 	// Error message describing what went wrong
 	Error *string `json:"error,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GithubComQeeqezApiInternalErrorsErrorResponse GithubComQeeqezApiInternalErrorsErrorResponse
 
 // NewGithubComQeeqezApiInternalErrorsErrorResponse instantiates a new GithubComQeeqezApiInternalErrorsErrorResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -163,35 +160,7 @@ func (o GithubComQeeqezApiInternalErrorsErrorResponse) ToMap() (map[string]inter
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GithubComQeeqezApiInternalErrorsErrorResponse) UnmarshalJSON(data []byte) (err error) {
-	varGithubComQeeqezApiInternalErrorsErrorResponse := _GithubComQeeqezApiInternalErrorsErrorResponse{}
-
-	err = json.Unmarshal(data, &varGithubComQeeqezApiInternalErrorsErrorResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GithubComQeeqezApiInternalErrorsErrorResponse(varGithubComQeeqezApiInternalErrorsErrorResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "code")
-		delete(additionalProperties, "details")
-		delete(additionalProperties, "error")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGithubComQeeqezApiInternalErrorsErrorResponse struct {

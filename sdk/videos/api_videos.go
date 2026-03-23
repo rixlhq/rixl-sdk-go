@@ -22,301 +22,12 @@ import (
 )
 
 
-type VideosAPI interface {
-
-	/*
-	DeleteVideosVideoIdAudioTracks Delete all audio tracks
-
-	Remove all additional audio tracks from a video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiDeleteVideosVideoIdAudioTracksRequest
-	*/
-	DeleteVideosVideoIdAudioTracks(ctx context.Context, videoId string) ApiDeleteVideosVideoIdAudioTracksRequest
-
-	// DeleteVideosVideoIdAudioTracksExecute executes the request
-	//  @return AudioTrackDelete
-	DeleteVideosVideoIdAudioTracksExecute(r ApiDeleteVideosVideoIdAudioTracksRequest) (*AudioTrackDelete, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdAudioTracksLangCode Delete audio track by language
-
-	Remove an audio track for a specific language using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param langCode Language Code (BCP 47)
-	@return ApiDeleteVideosVideoIdAudioTracksLangCodeRequest
-	*/
-	DeleteVideosVideoIdAudioTracksLangCode(ctx context.Context, videoId string, langCode string) ApiDeleteVideosVideoIdAudioTracksLangCodeRequest
-
-	// DeleteVideosVideoIdAudioTracksLangCodeExecute executes the request
-	//  @return AudioTrackDelete
-	DeleteVideosVideoIdAudioTracksLangCodeExecute(r ApiDeleteVideosVideoIdAudioTracksLangCodeRequest) (*AudioTrackDelete, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdAudioTracksTrackId Delete audio track
-
-	Remove an additional audio track from a video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param trackId Audio Track ID
-	@return ApiDeleteVideosVideoIdAudioTracksTrackIdRequest
-	*/
-	DeleteVideosVideoIdAudioTracksTrackId(ctx context.Context, videoId string, trackId string) ApiDeleteVideosVideoIdAudioTracksTrackIdRequest
-
-	// DeleteVideosVideoIdAudioTracksTrackIdExecute executes the request
-	//  @return AudioTrackDelete
-	DeleteVideosVideoIdAudioTracksTrackIdExecute(r ApiDeleteVideosVideoIdAudioTracksTrackIdRequest) (*AudioTrackDelete, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdChapters Delete video chapters
-
-	Remove all chapters from a video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiDeleteVideosVideoIdChaptersRequest
-	*/
-	DeleteVideosVideoIdChapters(ctx context.Context, videoId string) ApiDeleteVideosVideoIdChaptersRequest
-
-	// DeleteVideosVideoIdChaptersExecute executes the request
-	//  @return UpdateChaptersResponse
-	DeleteVideosVideoIdChaptersExecute(r ApiDeleteVideosVideoIdChaptersRequest) (*UpdateChaptersResponse, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdDelete Delete video
-
-	Delete a video by its ID within a project
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiDeleteVideosVideoIdDeleteRequest
-	*/
-	DeleteVideosVideoIdDelete(ctx context.Context, videoId string) ApiDeleteVideosVideoIdDeleteRequest
-
-	// DeleteVideosVideoIdDeleteExecute executes the request
-	DeleteVideosVideoIdDeleteExecute(r ApiDeleteVideosVideoIdDeleteRequest) (*http.Response, error)
-
-	/*
-	DeleteVideosVideoIdSubtitles Delete all subtitles
-
-	Remove all subtitles from a video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiDeleteVideosVideoIdSubtitlesRequest
-	*/
-	DeleteVideosVideoIdSubtitles(ctx context.Context, videoId string) ApiDeleteVideosVideoIdSubtitlesRequest
-
-	// DeleteVideosVideoIdSubtitlesExecute executes the request
-	//  @return SubtitleDelete
-	DeleteVideosVideoIdSubtitlesExecute(r ApiDeleteVideosVideoIdSubtitlesRequest) (*SubtitleDelete, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdSubtitlesLangCode Delete subtitle by language
-
-	Remove a subtitle for a specific language using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param langCode Language Code (BCP 47)
-	@return ApiDeleteVideosVideoIdSubtitlesLangCodeRequest
-	*/
-	DeleteVideosVideoIdSubtitlesLangCode(ctx context.Context, videoId string, langCode string) ApiDeleteVideosVideoIdSubtitlesLangCodeRequest
-
-	// DeleteVideosVideoIdSubtitlesLangCodeExecute executes the request
-	//  @return SubtitleDelete
-	DeleteVideosVideoIdSubtitlesLangCodeExecute(r ApiDeleteVideosVideoIdSubtitlesLangCodeRequest) (*SubtitleDelete, *http.Response, error)
-
-	/*
-	DeleteVideosVideoIdSubtitlesSubtitleId Delete subtitle
-
-	Remove a subtitle from a video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param subtitleId Subtitle ID
-	@return ApiDeleteVideosVideoIdSubtitlesSubtitleIdRequest
-	*/
-	DeleteVideosVideoIdSubtitlesSubtitleId(ctx context.Context, videoId string, subtitleId string) ApiDeleteVideosVideoIdSubtitlesSubtitleIdRequest
-
-	// DeleteVideosVideoIdSubtitlesSubtitleIdExecute executes the request
-	//  @return SubtitleDelete
-	DeleteVideosVideoIdSubtitlesSubtitleIdExecute(r ApiDeleteVideosVideoIdSubtitlesSubtitleIdRequest) (*SubtitleDelete, *http.Response, error)
-
-	/*
-	GetVideos List videos for a project
-
-	Retrieve all videos for a specific project, with pagination and sorting.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetVideosRequest
-	*/
-	GetVideos(ctx context.Context) ApiGetVideosRequest
-
-	// GetVideosExecute executes the request
-	//  @return PaginationPaginatedResponseVideo
-	GetVideosExecute(r ApiGetVideosRequest) (*PaginationPaginatedResponseVideo, *http.Response, error)
-
-	/*
-	GetVideosLanguages List available subtitle languages
-
-	Get list of supported languages for subtitles
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetVideosLanguagesRequest
-	*/
-	GetVideosLanguages(ctx context.Context) ApiGetVideosLanguagesRequest
-
-	// GetVideosLanguagesExecute executes the request
-	//  @return []InternalVideosHandlerSubtitlesLanguageResponse
-	GetVideosLanguagesExecute(r ApiGetVideosLanguagesRequest) ([]InternalVideosHandlerSubtitlesLanguageResponse, *http.Response, error)
-
-	/*
-	GetVideosVideoId Get a video
-
-	Retrieve a video by its ID for a specific project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiGetVideosVideoIdRequest
-	*/
-	GetVideosVideoId(ctx context.Context, videoId string) ApiGetVideosVideoIdRequest
-
-	// GetVideosVideoIdExecute executes the request
-	//  @return Video
-	GetVideosVideoIdExecute(r ApiGetVideosVideoIdRequest) (*Video, *http.Response, error)
-
-	/*
-	PostVideosUploadComplete Upload: Mark as complete
-
-	Mark a video upload as complete after successful upload to storage using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostVideosUploadCompleteRequest
-	*/
-	PostVideosUploadComplete(ctx context.Context) ApiPostVideosUploadCompleteRequest
-
-	// PostVideosUploadCompleteExecute executes the request
-	//  @return Video
-	PostVideosUploadCompleteExecute(r ApiPostVideosUploadCompleteRequest) (*Video, *http.Response, error)
-
-	/*
-	PostVideosUploadInit Upload: Init
-
-	Initialize a video upload and get presigned URLs for video and poster using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostVideosUploadInitRequest
-	*/
-	PostVideosUploadInit(ctx context.Context) ApiPostVideosUploadInitRequest
-
-	// PostVideosUploadInitExecute executes the request
-	//  @return GithubComQeeqezApiInternalVideosHandlerUploadInitResponse
-	PostVideosUploadInitExecute(r ApiPostVideosUploadInitRequest) (*GithubComQeeqezApiInternalVideosHandlerUploadInitResponse, *http.Response, error)
-
-	/*
-	PostVideosVideoIdAudioTracks Bulk upsert video audio tracks
-
-	Replace all audio tracks with the provided ones using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiPostVideosVideoIdAudioTracksRequest
-	*/
-	PostVideosVideoIdAudioTracks(ctx context.Context, videoId string) ApiPostVideosVideoIdAudioTracksRequest
-
-	// PostVideosVideoIdAudioTracksExecute executes the request
-	//  @return []AudioTrack
-	PostVideosVideoIdAudioTracksExecute(r ApiPostVideosVideoIdAudioTracksRequest) ([]AudioTrack, *http.Response, error)
-
-	/*
-	PostVideosVideoIdSubtitles Bulk upsert video subtitles
-
-	Replace all subtitles with the provided ones using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiPostVideosVideoIdSubtitlesRequest
-	*/
-	PostVideosVideoIdSubtitles(ctx context.Context, videoId string) ApiPostVideosVideoIdSubtitlesRequest
-
-	// PostVideosVideoIdSubtitlesExecute executes the request
-	//  @return []Subtitle
-	PostVideosVideoIdSubtitlesExecute(r ApiPostVideosVideoIdSubtitlesRequest) ([]Subtitle, *http.Response, error)
-
-	/*
-	PutVideosVideoIdAudioTracksLangCode Upsert video audio track
-
-	Add or replace an audio track for a specific language using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param langCode Language Code (BCP 47)
-	@return ApiPutVideosVideoIdAudioTracksLangCodeRequest
-	*/
-	PutVideosVideoIdAudioTracksLangCode(ctx context.Context, videoId string, langCode string) ApiPutVideosVideoIdAudioTracksLangCodeRequest
-
-	// PutVideosVideoIdAudioTracksLangCodeExecute executes the request
-	//  @return AudioTrack
-	PutVideosVideoIdAudioTracksLangCodeExecute(r ApiPutVideosVideoIdAudioTracksLangCodeRequest) (*AudioTrack, *http.Response, error)
-
-	/*
-	PutVideosVideoIdChapters Update video chapters
-
-	Replace all chapters for a video (atomic PUT operation) using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiPutVideosVideoIdChaptersRequest
-	*/
-	PutVideosVideoIdChapters(ctx context.Context, videoId string) ApiPutVideosVideoIdChaptersRequest
-
-	// PutVideosVideoIdChaptersExecute executes the request
-	//  @return UpdateChaptersResponse
-	PutVideosVideoIdChaptersExecute(r ApiPutVideosVideoIdChaptersRequest) (*UpdateChaptersResponse, *http.Response, error)
-
-	/*
-	PutVideosVideoIdSubtitlesLangCode Upsert video subtitle
-
-	Add or replace a subtitle for a specific language using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@param langCode Language Code (BCP 47)
-	@return ApiPutVideosVideoIdSubtitlesLangCodeRequest
-	*/
-	PutVideosVideoIdSubtitlesLangCode(ctx context.Context, videoId string, langCode string) ApiPutVideosVideoIdSubtitlesLangCodeRequest
-
-	// PutVideosVideoIdSubtitlesLangCodeExecute executes the request
-	//  @return Subtitle
-	PutVideosVideoIdSubtitlesLangCodeExecute(r ApiPutVideosVideoIdSubtitlesLangCodeRequest) (*Subtitle, *http.Response, error)
-
-	/*
-	PutVideosVideoIdThumbnail Update video thumbnail
-
-	Update the thumbnail image for an existing video using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param videoId Video ID
-	@return ApiPutVideosVideoIdThumbnailRequest
-	*/
-	PutVideosVideoIdThumbnail(ctx context.Context, videoId string) ApiPutVideosVideoIdThumbnailRequest
-
-	// PutVideosVideoIdThumbnailExecute executes the request
-	//  @return Video
-	PutVideosVideoIdThumbnailExecute(r ApiPutVideosVideoIdThumbnailRequest) (*Video, *http.Response, error)
-}
-
 // VideosAPIService VideosAPI service
 type VideosAPIService service
 
 type ApiDeleteVideosVideoIdAudioTracksRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 }
 
@@ -433,7 +144,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksExecute(r ApiDeleteVide
 
 type ApiDeleteVideosVideoIdAudioTracksLangCodeRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	langCode string
 }
@@ -554,7 +265,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksLangCodeExecute(r ApiDe
 
 type ApiDeleteVideosVideoIdAudioTracksTrackIdRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	trackId string
 }
@@ -718,7 +429,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksTrackIdExecute(r ApiDel
 
 type ApiDeleteVideosVideoIdChaptersRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 }
 
@@ -878,7 +589,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdChaptersExecute(r ApiDeleteVideosV
 
 type ApiDeleteVideosVideoIdDeleteRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 }
 
@@ -1038,7 +749,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdDeleteExecute(r ApiDeleteVideosVid
 
 type ApiDeleteVideosVideoIdSubtitlesRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 }
 
@@ -1155,7 +866,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesExecute(r ApiDeleteVideos
 
 type ApiDeleteVideosVideoIdSubtitlesLangCodeRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	langCode string
 }
@@ -1276,7 +987,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesLangCodeExecute(r ApiDele
 
 type ApiDeleteVideosVideoIdSubtitlesSubtitleIdRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	subtitleId string
 }
@@ -1440,7 +1151,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesSubtitleIdExecute(r ApiDe
 
 type ApiGetVideosRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	limit *int32
 	offset *int32
 	sort *string
@@ -1644,7 +1355,7 @@ func (a *VideosAPIService) GetVideosExecute(r ApiGetVideosRequest) (*PaginationP
 
 type ApiGetVideosLanguagesRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 }
 
 func (r ApiGetVideosLanguagesRequest) Execute() ([]InternalVideosHandlerSubtitlesLanguageResponse, *http.Response, error) {
@@ -1743,7 +1454,7 @@ func (a *VideosAPIService) GetVideosLanguagesExecute(r ApiGetVideosLanguagesRequ
 
 type ApiGetVideosVideoIdRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 }
 
@@ -1914,7 +1625,7 @@ func (a *VideosAPIService) GetVideosVideoIdExecute(r ApiGetVideosVideoIdRequest)
 
 type ApiPostVideosUploadCompleteRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	request *GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest
 }
 
@@ -2093,7 +1804,7 @@ func (a *VideosAPIService) PostVideosUploadCompleteExecute(r ApiPostVideosUpload
 
 type ApiPostVideosUploadInitRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	request *VideoUploadInitRequest
 }
 
@@ -2261,7 +1972,7 @@ func (a *VideosAPIService) PostVideosUploadInitExecute(r ApiPostVideosUploadInit
 
 type ApiPostVideosVideoIdAudioTracksRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	files []*os.File
 	languageCodes *string
@@ -2428,7 +2139,7 @@ func (a *VideosAPIService) PostVideosVideoIdAudioTracksExecute(r ApiPostVideosVi
 
 type ApiPostVideosVideoIdSubtitlesRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	files []*os.File
 	languageCodes *string
@@ -2595,7 +2306,7 @@ func (a *VideosAPIService) PostVideosVideoIdSubtitlesExecute(r ApiPostVideosVide
 
 type ApiPutVideosVideoIdAudioTracksLangCodeRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	langCode string
 	file *os.File
@@ -2751,7 +2462,7 @@ func (a *VideosAPIService) PutVideosVideoIdAudioTracksLangCodeExecute(r ApiPutVi
 
 type ApiPutVideosVideoIdChaptersRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	request *UpdateChaptersRequest
 }
@@ -2934,7 +2645,7 @@ func (a *VideosAPIService) PutVideosVideoIdChaptersExecute(r ApiPutVideosVideoId
 
 type ApiPutVideosVideoIdSubtitlesLangCodeRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	langCode string
 	file *os.File
@@ -3090,7 +2801,7 @@ func (a *VideosAPIService) PutVideosVideoIdSubtitlesLangCodeExecute(r ApiPutVide
 
 type ApiPutVideosVideoIdThumbnailRequest struct {
 	ctx context.Context
-	ApiService VideosAPI
+	ApiService *VideosAPIService
 	videoId string
 	thumbnail *os.File
 }

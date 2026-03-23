@@ -21,86 +21,12 @@ import (
 )
 
 
-type ImagesAPI interface {
-
-	/*
-	DeleteImagesImageId Delete image
-
-	delete an image by marking it as deleted
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param imageId Image ID
-	@return ApiDeleteImagesImageIdRequest
-	*/
-	DeleteImagesImageId(ctx context.Context, imageId string) ApiDeleteImagesImageIdRequest
-
-	// DeleteImagesImageIdExecute executes the request
-	DeleteImagesImageIdExecute(r ApiDeleteImagesImageIdRequest) (*http.Response, error)
-
-	/*
-	GetImages List images for a project
-
-	Retrieve all images for a specific project, with pagination and sorting.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetImagesRequest
-	*/
-	GetImages(ctx context.Context) ApiGetImagesRequest
-
-	// GetImagesExecute executes the request
-	//  @return PaginationPaginatedResponseImage
-	GetImagesExecute(r ApiGetImagesRequest) (*PaginationPaginatedResponseImage, *http.Response, error)
-
-	/*
-	GetImagesImageId Get image
-
-	Retrieve an image by its ID for a specific project.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param imageId Image ID
-	@return ApiGetImagesImageIdRequest
-	*/
-	GetImagesImageId(ctx context.Context, imageId string) ApiGetImagesImageIdRequest
-
-	// GetImagesImageIdExecute executes the request
-	//  @return Image
-	GetImagesImageIdExecute(r ApiGetImagesImageIdRequest) (*Image, *http.Response, error)
-
-	/*
-	PostImagesUploadComplete Upload: Mark as complete
-
-	Complete the upload process and create the image record using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostImagesUploadCompleteRequest
-	*/
-	PostImagesUploadComplete(ctx context.Context) ApiPostImagesUploadCompleteRequest
-
-	// PostImagesUploadCompleteExecute executes the request
-	//  @return Image
-	PostImagesUploadCompleteExecute(r ApiPostImagesUploadCompleteRequest) (*Image, *http.Response, error)
-
-	/*
-	PostImagesUploadInit Upload: Init
-
-	Initialize a presigned URL upload for an image file using API key authentication
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostImagesUploadInitRequest
-	*/
-	PostImagesUploadInit(ctx context.Context) ApiPostImagesUploadInitRequest
-
-	// PostImagesUploadInitExecute executes the request
-	//  @return InternalImagesHandlerInitResponse
-	PostImagesUploadInitExecute(r ApiPostImagesUploadInitRequest) (*InternalImagesHandlerInitResponse, *http.Response, error)
-}
-
 // ImagesAPIService ImagesAPI service
 type ImagesAPIService service
 
 type ApiDeleteImagesImageIdRequest struct {
 	ctx context.Context
-	ApiService ImagesAPI
+	ApiService *ImagesAPIService
 	imageId string
 }
 
@@ -260,7 +186,7 @@ func (a *ImagesAPIService) DeleteImagesImageIdExecute(r ApiDeleteImagesImageIdRe
 
 type ApiGetImagesRequest struct {
 	ctx context.Context
-	ApiService ImagesAPI
+	ApiService *ImagesAPIService
 	limit *int32
 	offset *int32
 	sort *string
@@ -464,7 +390,7 @@ func (a *ImagesAPIService) GetImagesExecute(r ApiGetImagesRequest) (*PaginationP
 
 type ApiGetImagesImageIdRequest struct {
 	ctx context.Context
-	ApiService ImagesAPI
+	ApiService *ImagesAPIService
 	imageId string
 }
 
@@ -635,7 +561,7 @@ func (a *ImagesAPIService) GetImagesImageIdExecute(r ApiGetImagesImageIdRequest)
 
 type ApiPostImagesUploadCompleteRequest struct {
 	ctx context.Context
-	ApiService ImagesAPI
+	ApiService *ImagesAPIService
 	request *InternalImagesHandlerCompleteRequest
 }
 
@@ -814,7 +740,7 @@ func (a *ImagesAPIService) PostImagesUploadCompleteExecute(r ApiPostImagesUpload
 
 type ApiPostImagesUploadInitRequest struct {
 	ctx context.Context
-	ApiService ImagesAPI
+	ApiService *ImagesAPIService
 	request *InternalImagesHandlerUploadInitRequest
 }
 

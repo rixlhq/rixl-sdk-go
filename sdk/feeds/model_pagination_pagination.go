@@ -26,10 +26,7 @@ type PaginationPagination struct {
 	Offset *int32 `json:"offset,omitempty"`
 	// The total number of available items in the full list.
 	Total *int32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PaginationPagination PaginationPagination
 
 // NewPaginationPagination instantiates a new PaginationPagination object
 // This constructor will assign default values to properties that have it defined,
@@ -163,35 +160,7 @@ func (o PaginationPagination) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PaginationPagination) UnmarshalJSON(data []byte) (err error) {
-	varPaginationPagination := _PaginationPagination{}
-
-	err = json.Unmarshal(data, &varPaginationPagination)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaginationPagination(varPaginationPagination)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePaginationPagination struct {

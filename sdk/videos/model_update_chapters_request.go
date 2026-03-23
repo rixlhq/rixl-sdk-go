@@ -21,10 +21,7 @@ var _ MappedNullable = &UpdateChaptersRequest{}
 // UpdateChaptersRequest struct for UpdateChaptersRequest
 type UpdateChaptersRequest struct {
 	Chapters []GithubComQeeqezApiInternalVideosTypesChapterInput `json:"chapters,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _UpdateChaptersRequest UpdateChaptersRequest
 
 // NewUpdateChaptersRequest instantiates a new UpdateChaptersRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o UpdateChaptersRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Chapters) {
 		toSerialize["chapters"] = o.Chapters
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *UpdateChaptersRequest) UnmarshalJSON(data []byte) (err error) {
-	varUpdateChaptersRequest := _UpdateChaptersRequest{}
-
-	err = json.Unmarshal(data, &varUpdateChaptersRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateChaptersRequest(varUpdateChaptersRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "chapters")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableUpdateChaptersRequest struct {
