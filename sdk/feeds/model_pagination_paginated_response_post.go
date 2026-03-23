@@ -22,7 +22,6 @@ var _ MappedNullable = &PaginationPaginatedResponsePost{}
 type PaginationPaginatedResponsePost struct {
 	// Data contains the slice of items for the current request.
 	Data []Post `json:"data,omitempty"`
-	// Pagination data for the request.
 	Pagination *PaginationPagination `json:"pagination,omitempty"`
 }
 

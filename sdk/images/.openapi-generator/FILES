@@ -15,6 +15,8 @@ docs/InternalImagesHandlerInitResponse.md
 docs/InternalImagesHandlerUploadInitRequest.md
 docs/PaginationPaginatedResponseImage.md
 docs/PaginationPagination.md
+docs/PostImagesUploadCompleteRequest.md
+docs/PostImagesUploadInitRequest.md
 git_push.sh
 go.mod
 go.sum
@@ -27,5 +29,7 @@ model_internal_images_handler_init_response.go
 model_internal_images_handler_upload_init_request.go
 model_pagination_paginated_response_image.go
 model_pagination_pagination.go
+model_post_images_upload_complete_request.go
+model_post_images_upload_init_request.go
 response.go
 utils.go

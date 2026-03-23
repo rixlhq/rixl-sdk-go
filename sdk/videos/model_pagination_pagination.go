@@ -18,7 +18,7 @@ import (
 // checks if the PaginationPagination type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PaginationPagination{}
 
-// PaginationPagination struct for PaginationPagination
+// PaginationPagination Pagination data for the request.
 type PaginationPagination struct {
 	// Maximum number of items to return in a single request.
 	Limit *int32 `json:"limit,omitempty"`
@@ -34,6 +34,10 @@ type PaginationPagination struct {
 // will change when the set of required properties is changed
 func NewPaginationPagination() *PaginationPagination {
 	this := PaginationPagination{}
+	var limit int32 = 25
+	this.Limit = &limit
+	var offset int32 = 0
+	this.Offset = &offset
 	return &this
 }
 
@@ -42,6 +46,10 @@ func NewPaginationPagination() *PaginationPagination {
 // but it doesn't guarantee that properties required by API are set
 func NewPaginationPaginationWithDefaults() *PaginationPagination {
 	this := PaginationPagination{}
+	var limit int32 = 25
+	this.Limit = &limit
+	var offset int32 = 0
+	this.Offset = &offset
 	return &this
 }
 

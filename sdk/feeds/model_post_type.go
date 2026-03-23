@@ -23,12 +23,16 @@ type PostType string
 const (
 	POSTTYPE_PostTypeImage PostType = "image"
 	POSTTYPE_PostTypeVideo PostType = "video"
+	POSTTYPE_VIDEO2 PostType = "video"
+	POSTTYPE_IMAGE2 PostType = "image"
 )
 
 // All allowed values of PostType enum
 var AllowedPostTypeEnumValues = []PostType{
 	"image",
 	"video",
+	"video",
+	"image",
 }
 
 func (v *PostType) UnmarshalJSON(src []byte) error {

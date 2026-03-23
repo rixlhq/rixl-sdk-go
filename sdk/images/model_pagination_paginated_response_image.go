@@ -22,7 +22,6 @@ var _ MappedNullable = &PaginationPaginatedResponseImage{}
 type PaginationPaginatedResponseImage struct {
 	// Data contains the slice of items for the current request.
 	Data []Image `json:"data,omitempty"`
-	// Pagination data for the request.
 	Pagination *PaginationPagination `json:"pagination,omitempty"`
 }
 

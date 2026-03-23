@@ -81,7 +81,7 @@ func (a *ImagesAPIService) DeleteImagesImageIdExecute(r ApiDeleteImagesImageIdRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -258,24 +258,24 @@ func (a *ImagesAPIService) GetImagesExecute(r ApiGetImagesRequest) (*PaginationP
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 25
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
 		var defaultValue int32 = 0
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", defaultValue, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", defaultValue, "form", "")
 		r.offset = &defaultValue
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -562,12 +562,12 @@ func (a *ImagesAPIService) GetImagesImageIdExecute(r ApiGetImagesImageIdRequest)
 type ApiPostImagesUploadCompleteRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
-	request *InternalImagesHandlerCompleteRequest
+	postImagesUploadCompleteRequest *PostImagesUploadCompleteRequest
 }
 
 // Upload completion request
-func (r ApiPostImagesUploadCompleteRequest) Request(request InternalImagesHandlerCompleteRequest) ApiPostImagesUploadCompleteRequest {
-	r.request = &request
+func (r ApiPostImagesUploadCompleteRequest) PostImagesUploadCompleteRequest(postImagesUploadCompleteRequest PostImagesUploadCompleteRequest) ApiPostImagesUploadCompleteRequest {
+	r.postImagesUploadCompleteRequest = &postImagesUploadCompleteRequest
 	return r
 }
 
@@ -610,8 +610,8 @@ func (a *ImagesAPIService) PostImagesUploadCompleteExecute(r ApiPostImagesUpload
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.postImagesUploadCompleteRequest == nil {
+		return localVarReturnValue, nil, reportError("postImagesUploadCompleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -632,7 +632,7 @@ func (a *ImagesAPIService) PostImagesUploadCompleteExecute(r ApiPostImagesUpload
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.postImagesUploadCompleteRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -741,12 +741,12 @@ func (a *ImagesAPIService) PostImagesUploadCompleteExecute(r ApiPostImagesUpload
 type ApiPostImagesUploadInitRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
-	request *InternalImagesHandlerUploadInitRequest
+	postImagesUploadInitRequest *PostImagesUploadInitRequest
 }
 
 // Upload initialization request
-func (r ApiPostImagesUploadInitRequest) Request(request InternalImagesHandlerUploadInitRequest) ApiPostImagesUploadInitRequest {
-	r.request = &request
+func (r ApiPostImagesUploadInitRequest) PostImagesUploadInitRequest(postImagesUploadInitRequest PostImagesUploadInitRequest) ApiPostImagesUploadInitRequest {
+	r.postImagesUploadInitRequest = &postImagesUploadInitRequest
 	return r
 }
 
@@ -789,8 +789,8 @@ func (a *ImagesAPIService) PostImagesUploadInitExecute(r ApiPostImagesUploadInit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.postImagesUploadInitRequest == nil {
+		return localVarReturnValue, nil, reportError("postImagesUploadInitRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -811,7 +811,7 @@ func (a *ImagesAPIService) PostImagesUploadInitExecute(r ApiPostImagesUploadInit
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.postImagesUploadInitRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

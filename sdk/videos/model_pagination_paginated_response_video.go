@@ -22,7 +22,6 @@ var _ MappedNullable = &PaginationPaginatedResponseVideo{}
 type PaginationPaginatedResponseVideo struct {
 	// Data contains the slice of items for the current request.
 	Data []Video `json:"data,omitempty"`
-	// Pagination data for the request.
 	Pagination *PaginationPagination `json:"pagination,omitempty"`
 }
 

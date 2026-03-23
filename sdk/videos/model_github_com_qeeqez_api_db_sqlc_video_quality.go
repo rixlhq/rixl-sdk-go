@@ -24,10 +24,16 @@ const (
 	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_VideoQualityBasic GithubComQeeqezApiDbSqlcVideoQuality = "basic"
 	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_VideoQualityShorts GithubComQeeqezApiDbSqlcVideoQuality = "shorts"
 	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_VideoQualityPro GithubComQeeqezApiDbSqlcVideoQuality = "pro"
+	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_BASIC2 GithubComQeeqezApiDbSqlcVideoQuality = "basic"
+	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_SHORTS2 GithubComQeeqezApiDbSqlcVideoQuality = "shorts"
+	GITHUBCOMQEEQEZAPIDBSQLCVIDEOQUALITY_PRO2 GithubComQeeqezApiDbSqlcVideoQuality = "pro"
 )
 
 // All allowed values of GithubComQeeqezApiDbSqlcVideoQuality enum
 var AllowedGithubComQeeqezApiDbSqlcVideoQualityEnumValues = []GithubComQeeqezApiDbSqlcVideoQuality{
+	"basic",
+	"shorts",
+	"pro",
 	"basic",
 	"shorts",
 	"pro",

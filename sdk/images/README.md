@@ -100,6 +100,8 @@ Class | Method | HTTP request | Description
  - [InternalImagesHandlerUploadInitRequest](docs/InternalImagesHandlerUploadInitRequest.md)
  - [PaginationPaginatedResponseImage](docs/PaginationPaginatedResponseImage.md)
  - [PaginationPagination](docs/PaginationPagination.md)
+ - [PostImagesUploadCompleteRequest](docs/PostImagesUploadCompleteRequest.md)
+ - [PostImagesUploadInitRequest](docs/PostImagesUploadInitRequest.md)
 
 
 ## Documentation For Authorization

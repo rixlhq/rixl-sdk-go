@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"os"
 )
 
 
@@ -84,7 +83,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksExecute(r ApiDeleteVide
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -205,7 +204,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksLangCodeExecute(r ApiDe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -326,7 +325,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdAudioTracksTrackIdExecute(r ApiDel
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -644,7 +643,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdDeleteExecute(r ApiDeleteVideosVid
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -806,7 +805,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesExecute(r ApiDeleteVideos
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -927,7 +926,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesLangCodeExecute(r ApiDele
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1048,7 +1047,7 @@ func (a *VideosAPIService) DeleteVideosVideoIdSubtitlesSubtitleIdExecute(r ApiDe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1223,24 +1222,24 @@ func (a *VideosAPIService) GetVideosExecute(r ApiGetVideosRequest) (*PaginationP
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 25
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
 		var defaultValue int32 = 0
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", defaultValue, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", defaultValue, "form", "")
 		r.offset = &defaultValue
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1626,12 +1625,12 @@ func (a *VideosAPIService) GetVideosVideoIdExecute(r ApiGetVideosVideoIdRequest)
 type ApiPostVideosUploadCompleteRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
-	request *GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest
+	postVideosUploadCompleteRequest *PostVideosUploadCompleteRequest
 }
 
 // Video upload completion request
-func (r ApiPostVideosUploadCompleteRequest) Request(request GithubComQeeqezApiInternalVideosHandlerUploadCompleteRequest) ApiPostVideosUploadCompleteRequest {
-	r.request = &request
+func (r ApiPostVideosUploadCompleteRequest) PostVideosUploadCompleteRequest(postVideosUploadCompleteRequest PostVideosUploadCompleteRequest) ApiPostVideosUploadCompleteRequest {
+	r.postVideosUploadCompleteRequest = &postVideosUploadCompleteRequest
 	return r
 }
 
@@ -1674,8 +1673,8 @@ func (a *VideosAPIService) PostVideosUploadCompleteExecute(r ApiPostVideosUpload
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.postVideosUploadCompleteRequest == nil {
+		return localVarReturnValue, nil, reportError("postVideosUploadCompleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1696,7 +1695,7 @@ func (a *VideosAPIService) PostVideosUploadCompleteExecute(r ApiPostVideosUpload
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.postVideosUploadCompleteRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1805,12 +1804,12 @@ func (a *VideosAPIService) PostVideosUploadCompleteExecute(r ApiPostVideosUpload
 type ApiPostVideosUploadInitRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
-	request *VideoUploadInitRequest
+	postVideosUploadInitRequest *PostVideosUploadInitRequest
 }
 
 // Video upload initialization request
-func (r ApiPostVideosUploadInitRequest) Request(request VideoUploadInitRequest) ApiPostVideosUploadInitRequest {
-	r.request = &request
+func (r ApiPostVideosUploadInitRequest) PostVideosUploadInitRequest(postVideosUploadInitRequest PostVideosUploadInitRequest) ApiPostVideosUploadInitRequest {
+	r.postVideosUploadInitRequest = &postVideosUploadInitRequest
 	return r
 }
 
@@ -1853,8 +1852,8 @@ func (a *VideosAPIService) PostVideosUploadInitExecute(r ApiPostVideosUploadInit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.postVideosUploadInitRequest == nil {
+		return localVarReturnValue, nil, reportError("postVideosUploadInitRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1875,7 +1874,7 @@ func (a *VideosAPIService) PostVideosUploadInitExecute(r ApiPostVideosUploadInit
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.postVideosUploadInitRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1974,27 +1973,6 @@ type ApiPostVideosVideoIdAudioTracksRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
 	videoId string
-	files []*os.File
-	languageCodes *string
-	labels *string
-}
-
-// Audio files (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac)
-func (r ApiPostVideosVideoIdAudioTracksRequest) Files(files []*os.File) ApiPostVideosVideoIdAudioTracksRequest {
-	r.files = files
-	return r
-}
-
-// Comma-separated language codes
-func (r ApiPostVideosVideoIdAudioTracksRequest) LanguageCodes(languageCodes string) ApiPostVideosVideoIdAudioTracksRequest {
-	r.languageCodes = &languageCodes
-	return r
-}
-
-// Comma-separated labels
-func (r ApiPostVideosVideoIdAudioTracksRequest) Labels(labels string) ApiPostVideosVideoIdAudioTracksRequest {
-	r.labels = &labels
-	return r
 }
 
 func (r ApiPostVideosVideoIdAudioTracksRequest) Execute() ([]AudioTrack, *http.Response, error) {
@@ -2039,18 +2017,9 @@ func (a *VideosAPIService) PostVideosVideoIdAudioTracksExecute(r ApiPostVideosVi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.files == nil {
-		return localVarReturnValue, nil, reportError("files is required and must be specified")
-	}
-	if r.languageCodes == nil {
-		return localVarReturnValue, nil, reportError("languageCodes is required and must be specified")
-	}
-	if r.labels == nil {
-		return localVarReturnValue, nil, reportError("labels is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2066,26 +2035,6 @@ func (a *VideosAPIService) PostVideosVideoIdAudioTracksExecute(r ApiPostVideosVi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	var filesLocalVarFormFileName string
-	var filesLocalVarFileName     string
-	var filesLocalVarFileBytes    []byte
-
-	filesLocalVarFormFileName = "files"
-	filesLocalVarFile := r.files
-
-	if filesLocalVarFile != nil {
-		// loop through the array to prepare multiple files upload
-		for _, filesLocalVarFileValue := range filesLocalVarFile {
-			fbs, _ := io.ReadAll(filesLocalVarFileValue)
-
-			filesLocalVarFileBytes = fbs
-			filesLocalVarFileName = filesLocalVarFileValue.Name()
-			filesLocalVarFileValue.Close()
-			formFiles = append(formFiles, formFile{fileBytes: filesLocalVarFileBytes, fileName: filesLocalVarFileName, formFileName: filesLocalVarFormFileName})
-		}
-	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "language_codes", r.languageCodes, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "labels", r.labels, "", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2141,27 +2090,6 @@ type ApiPostVideosVideoIdSubtitlesRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
 	videoId string
-	files []*os.File
-	languageCodes *string
-	labels *string
-}
-
-// Subtitle files (.srt or .vtt)
-func (r ApiPostVideosVideoIdSubtitlesRequest) Files(files []*os.File) ApiPostVideosVideoIdSubtitlesRequest {
-	r.files = files
-	return r
-}
-
-// Comma-separated language codes
-func (r ApiPostVideosVideoIdSubtitlesRequest) LanguageCodes(languageCodes string) ApiPostVideosVideoIdSubtitlesRequest {
-	r.languageCodes = &languageCodes
-	return r
-}
-
-// Comma-separated labels
-func (r ApiPostVideosVideoIdSubtitlesRequest) Labels(labels string) ApiPostVideosVideoIdSubtitlesRequest {
-	r.labels = &labels
-	return r
 }
 
 func (r ApiPostVideosVideoIdSubtitlesRequest) Execute() ([]Subtitle, *http.Response, error) {
@@ -2206,18 +2134,9 @@ func (a *VideosAPIService) PostVideosVideoIdSubtitlesExecute(r ApiPostVideosVide
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.files == nil {
-		return localVarReturnValue, nil, reportError("files is required and must be specified")
-	}
-	if r.languageCodes == nil {
-		return localVarReturnValue, nil, reportError("languageCodes is required and must be specified")
-	}
-	if r.labels == nil {
-		return localVarReturnValue, nil, reportError("labels is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2233,26 +2152,6 @@ func (a *VideosAPIService) PostVideosVideoIdSubtitlesExecute(r ApiPostVideosVide
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	var filesLocalVarFormFileName string
-	var filesLocalVarFileName     string
-	var filesLocalVarFileBytes    []byte
-
-	filesLocalVarFormFileName = "files"
-	filesLocalVarFile := r.files
-
-	if filesLocalVarFile != nil {
-		// loop through the array to prepare multiple files upload
-		for _, filesLocalVarFileValue := range filesLocalVarFile {
-			fbs, _ := io.ReadAll(filesLocalVarFileValue)
-
-			filesLocalVarFileBytes = fbs
-			filesLocalVarFileName = filesLocalVarFileValue.Name()
-			filesLocalVarFileValue.Close()
-			formFiles = append(formFiles, formFile{fileBytes: filesLocalVarFileBytes, fileName: filesLocalVarFileName, formFileName: filesLocalVarFormFileName})
-		}
-	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "language_codes", r.languageCodes, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "labels", r.labels, "", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2309,20 +2208,6 @@ type ApiPutVideosVideoIdAudioTracksLangCodeRequest struct {
 	ApiService *VideosAPIService
 	videoId string
 	langCode string
-	file *os.File
-	label *string
-}
-
-// Audio file (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac)
-func (r ApiPutVideosVideoIdAudioTracksLangCodeRequest) File(file *os.File) ApiPutVideosVideoIdAudioTracksLangCodeRequest {
-	r.file = file
-	return r
-}
-
-// Label (e.g. English)
-func (r ApiPutVideosVideoIdAudioTracksLangCodeRequest) Label(label string) ApiPutVideosVideoIdAudioTracksLangCodeRequest {
-	r.label = &label
-	return r
 }
 
 func (r ApiPutVideosVideoIdAudioTracksLangCodeRequest) Execute() (*AudioTrack, *http.Response, error) {
@@ -2370,12 +2255,9 @@ func (a *VideosAPIService) PutVideosVideoIdAudioTracksLangCodeExecute(r ApiPutVi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2390,24 +2272,6 @@ func (a *VideosAPIService) PutVideosVideoIdAudioTracksLangCodeExecute(r ApiPutVi
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
-
-	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
-
-	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
-	}
-	if r.label != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "label", r.label, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -2464,12 +2328,12 @@ type ApiPutVideosVideoIdChaptersRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
 	videoId string
-	request *UpdateChaptersRequest
+	putVideosVideoIdChaptersRequest *PutVideosVideoIdChaptersRequest
 }
 
 // Chapters array
-func (r ApiPutVideosVideoIdChaptersRequest) Request(request UpdateChaptersRequest) ApiPutVideosVideoIdChaptersRequest {
-	r.request = &request
+func (r ApiPutVideosVideoIdChaptersRequest) PutVideosVideoIdChaptersRequest(putVideosVideoIdChaptersRequest PutVideosVideoIdChaptersRequest) ApiPutVideosVideoIdChaptersRequest {
+	r.putVideosVideoIdChaptersRequest = &putVideosVideoIdChaptersRequest
 	return r
 }
 
@@ -2515,8 +2379,8 @@ func (a *VideosAPIService) PutVideosVideoIdChaptersExecute(r ApiPutVideosVideoId
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.request == nil {
-		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	if r.putVideosVideoIdChaptersRequest == nil {
+		return localVarReturnValue, nil, reportError("putVideosVideoIdChaptersRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2537,7 +2401,7 @@ func (a *VideosAPIService) PutVideosVideoIdChaptersExecute(r ApiPutVideosVideoId
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.request
+	localVarPostBody = r.putVideosVideoIdChaptersRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2648,20 +2512,6 @@ type ApiPutVideosVideoIdSubtitlesLangCodeRequest struct {
 	ApiService *VideosAPIService
 	videoId string
 	langCode string
-	file *os.File
-	label *string
-}
-
-// Subtitle file (.srt or .vtt)
-func (r ApiPutVideosVideoIdSubtitlesLangCodeRequest) File(file *os.File) ApiPutVideosVideoIdSubtitlesLangCodeRequest {
-	r.file = file
-	return r
-}
-
-// Label (e.g. English)
-func (r ApiPutVideosVideoIdSubtitlesLangCodeRequest) Label(label string) ApiPutVideosVideoIdSubtitlesLangCodeRequest {
-	r.label = &label
-	return r
 }
 
 func (r ApiPutVideosVideoIdSubtitlesLangCodeRequest) Execute() (*Subtitle, *http.Response, error) {
@@ -2709,12 +2559,9 @@ func (a *VideosAPIService) PutVideosVideoIdSubtitlesLangCodeExecute(r ApiPutVide
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2729,24 +2576,6 @@ func (a *VideosAPIService) PutVideosVideoIdSubtitlesLangCodeExecute(r ApiPutVide
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
-
-	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
-
-	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
-	}
-	if r.label != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "label", r.label, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -2803,13 +2632,6 @@ type ApiPutVideosVideoIdThumbnailRequest struct {
 	ctx context.Context
 	ApiService *VideosAPIService
 	videoId string
-	thumbnail *os.File
-}
-
-// Thumbnail image file (max 5MB, image/_*)
-func (r ApiPutVideosVideoIdThumbnailRequest) Thumbnail(thumbnail *os.File) ApiPutVideosVideoIdThumbnailRequest {
-	r.thumbnail = thumbnail
-	return r
 }
 
 func (r ApiPutVideosVideoIdThumbnailRequest) Execute() (*Video, *http.Response, error) {
@@ -2854,12 +2676,9 @@ func (a *VideosAPIService) PutVideosVideoIdThumbnailExecute(r ApiPutVideosVideoI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.thumbnail == nil {
-		return localVarReturnValue, nil, reportError("thumbnail is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded", "multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2874,21 +2693,6 @@ func (a *VideosAPIService) PutVideosVideoIdThumbnailExecute(r ApiPutVideosVideoI
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	var thumbnailLocalVarFormFileName string
-	var thumbnailLocalVarFileName     string
-	var thumbnailLocalVarFileBytes    []byte
-
-	thumbnailLocalVarFormFileName = "thumbnail"
-	thumbnailLocalVarFile := r.thumbnail
-
-	if thumbnailLocalVarFile != nil {
-		fbs, _ := io.ReadAll(thumbnailLocalVarFile)
-
-		thumbnailLocalVarFileBytes = fbs
-		thumbnailLocalVarFileName = thumbnailLocalVarFile.Name()
-		thumbnailLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: thumbnailLocalVarFileBytes, fileName: thumbnailLocalVarFileName, formFileName: thumbnailLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication
