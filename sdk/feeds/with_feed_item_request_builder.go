@@ -6,8 +6,8 @@ package feeds
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
-    i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a "github.com/qeeqez/rixl-sdk-go/sdk/models/pagination"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf "github.com/rixlhq/sdk-go/sdk/models/pagination"
 )
 
 // WithFeedItemRequestBuilder builds and executes requests for operations under \feeds\{feedId}
@@ -21,7 +21,7 @@ type WithFeedItemRequestBuilderGetQueryParameters struct {
     // Starting point of the result set. <br>To get page 2 with a limit of 25, set `offset` to `25`. <br> **Default:** `0`
     Offset *int32 `uriparametername:"offset"`
 }
-// ByPostId gets an item from the github.com/qeeqez/rixl-sdk-go/sdk.feeds.item.item collection
+// ByPostId gets an item from the github.com/rixlhq/sdk-go/sdk.feeds.item.item collection
 // returns a *ItemWithPostItemRequestBuilder when successful
 func (m *WithFeedItemRequestBuilder) ByPostId(postId string)(*ItemWithPostItemRequestBuilder) {
     urlTplParams := make(map[string]string)
@@ -55,23 +55,23 @@ func (m *WithFeedItemRequestBuilder) Creators()(*ItemCreatorsRequestBuilder) {
 // returns a PaginatedResponsePostable when successful
 // returns a ErrorResponse error when the service returns a 400 status code
 // returns a ErrorResponse error when the service returns a 500 status code
-func (m *WithFeedItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[WithFeedItemRequestBuilderGetQueryParameters])(i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.PaginatedResponsePostable, error) {
+func (m *WithFeedItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[WithFeedItemRequestBuilderGetQueryParameters])(if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.PaginatedResponsePostable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "500": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
+        "400": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "500": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.CreatePaginatedResponsePostFromDiscriminatorValue, errorMapping)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.CreatePaginatedResponsePostFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.PaginatedResponsePostable), nil
+    return res.(if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.PaginatedResponsePostable), nil
 }
 // ToGetRequestInformation retrieve posts in a feed, with pagination.
 // returns a *RequestInformation when successful

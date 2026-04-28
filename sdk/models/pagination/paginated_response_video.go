@@ -5,14 +5,14 @@ package pagination
 
 import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
 )
 
 type PaginatedResponseVideo struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Data contains the slice of items for the current request.
-    data []i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable
+    data []i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable
     // Pagination data for the request.
     pagination Paginationable
 }
@@ -35,7 +35,7 @@ func (m *PaginatedResponseVideo) GetAdditionalData()(map[string]any) {
 }
 // GetData gets the data property value. Data contains the slice of items for the current request.
 // returns a []Videoable when successful
-func (m *PaginatedResponseVideo) GetData()([]i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable) {
+func (m *PaginatedResponseVideo) GetData()([]i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable) {
     return m.data
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -43,15 +43,15 @@ func (m *PaginatedResponseVideo) GetData()([]i6a8119714aaa1c348f0ce22bc9a01a8501
 func (m *PaginatedResponseVideo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["data"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateVideoFromDiscriminatorValue)
+        val, err := n.GetCollectionOfObjectValues(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateVideoFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            res := make([]i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable, len(val))
+            res := make([]i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable, len(val))
             for i, v := range val {
                 if v != nil {
-                    res[i] = v.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable)
+                    res[i] = v.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable)
                 }
             }
             m.SetData(res)
@@ -108,7 +108,7 @@ func (m *PaginatedResponseVideo) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetData sets the data property value. Data contains the slice of items for the current request.
-func (m *PaginatedResponseVideo) SetData(value []i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable)() {
+func (m *PaginatedResponseVideo) SetData(value []i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable)() {
     m.data = value
 }
 // SetPagination sets the pagination property value. Pagination data for the request.
@@ -118,8 +118,8 @@ func (m *PaginatedResponseVideo) SetPagination(value Paginationable)() {
 type PaginatedResponseVideoable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetData()([]i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable)
+    GetData()([]i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable)
     GetPagination()(Paginationable)
-    SetData(value []i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable)()
+    SetData(value []i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable)()
     SetPagination(value Paginationable)()
 }

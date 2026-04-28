@@ -6,7 +6,7 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
 )
 
 // ItemAudioTracksWithLang_codeItemRequestBuilder builds and executes requests for operations under \videos\{videoId}\audio-tracks\{lang_code}
@@ -28,35 +28,35 @@ func NewItemAudioTracksWithLang_codeItemRequestBuilder(rawUrl string, requestAda
 }
 // Delete remove an audio track for a specific language using API key authentication
 // returns a AudioTrackDeleteable when successful
-func (m *ItemAudioTracksWithLang_codeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackDeleteable, error) {
+func (m *ItemAudioTracksWithLang_codeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackDeleteable, error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateAudioTrackDeleteFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateAudioTrackDeleteFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackDeleteable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackDeleteable), nil
 }
 // Put add or replace an audio track for a specific language using API key authentication
 // returns a AudioTrackable when successful
-func (m *ItemAudioTracksWithLang_codeItemRequestBuilder) Put(ctx context.Context, body ItemAudioTracksItemWithLang_codePutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackable, error) {
+func (m *ItemAudioTracksWithLang_codeItemRequestBuilder) Put(ctx context.Context, body ItemAudioTracksItemWithLang_codePutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackable, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateAudioTrackFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateAudioTrackFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackable), nil
 }
 // ToDeleteRequestInformation remove an audio track for a specific language using API key authentication
 // returns a *RequestInformation when successful

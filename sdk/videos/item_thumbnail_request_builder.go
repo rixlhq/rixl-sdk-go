@@ -6,8 +6,8 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
-    i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
 )
 
 // ItemThumbnailRequestBuilder builds and executes requests for operations under \videos\{videoId}\thumbnail
@@ -27,35 +27,35 @@ func NewItemThumbnailRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee
     urlParams["request-raw-url"] = rawUrl
     return NewItemThumbnailRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Put update the thumbnail image for an existing video using API key authentication
+// Put update the thumbnail image for an existing video
 // returns a Videoable when successful
 // returns a ErrorResponse error when the service returns a 400 status code
 // returns a ErrorResponse error when the service returns a 401 status code
 // returns a ErrorResponse error when the service returns a 403 status code
 // returns a ErrorResponse error when the service returns a 404 status code
 // returns a ErrorResponse error when the service returns a 500 status code
-func (m *ItemThumbnailRequestBuilder) Put(ctx context.Context, body ItemThumbnailPutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable, error) {
+func (m *ItemThumbnailRequestBuilder) Put(ctx context.Context, body ItemThumbnailPutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "401": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "403": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "404": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "500": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
+        "400": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "401": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "403": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "404": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "500": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateVideoFromDiscriminatorValue, errorMapping)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateVideoFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable), nil
 }
-// ToPutRequestInformation update the thumbnail image for an existing video using API key authentication
+// ToPutRequestInformation update the thumbnail image for an existing video
 // returns a *RequestInformation when successful
 func (m *ItemThumbnailRequestBuilder) ToPutRequestInformation(ctx context.Context, body ItemThumbnailPutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

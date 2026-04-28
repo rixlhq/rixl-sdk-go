@@ -6,8 +6,8 @@ package feeds
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
-    i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a "github.com/qeeqez/rixl-sdk-go/sdk/models/pagination"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf "github.com/rixlhq/sdk-go/sdk/models/pagination"
 )
 
 // ItemCreatorsWithCreatorItemRequestBuilder builds and executes requests for operations under \feeds\{feedId}\creators\{creatorId}
@@ -38,23 +38,23 @@ func NewItemCreatorsWithCreatorItemRequestBuilder(rawUrl string, requestAdapter 
 // returns a PaginatedResponsePostable when successful
 // returns a ErrorResponse error when the service returns a 400 status code
 // returns a ErrorResponse error when the service returns a 500 status code
-func (m *ItemCreatorsWithCreatorItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemCreatorsWithCreatorItemRequestBuilderGetQueryParameters])(i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.PaginatedResponsePostable, error) {
+func (m *ItemCreatorsWithCreatorItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemCreatorsWithCreatorItemRequestBuilderGetQueryParameters])(if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.PaginatedResponsePostable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "500": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
+        "400": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "500": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.CreatePaginatedResponsePostFromDiscriminatorValue, errorMapping)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.CreatePaginatedResponsePostFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i8e423a370febfcb59bc134b76fba557a13dffe67d1acc2c98104f520279a913a.PaginatedResponsePostable), nil
+    return res.(if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf.PaginatedResponsePostable), nil
 }
 // ToGetRequestInformation retrieve posts in a feed by a specific creator, with pagination.
 // returns a *RequestInformation when successful

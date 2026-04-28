@@ -6,7 +6,7 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
 )
 
 // ItemSubtitlesWithLang_codeItemRequestBuilder builds and executes requests for operations under \videos\{videoId}\subtitles\{lang_code}
@@ -28,35 +28,35 @@ func NewItemSubtitlesWithLang_codeItemRequestBuilder(rawUrl string, requestAdapt
 }
 // Delete remove a subtitle for a specific language using API key authentication
 // returns a SubtitleDeleteable when successful
-func (m *ItemSubtitlesWithLang_codeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.SubtitleDeleteable, error) {
+func (m *ItemSubtitlesWithLang_codeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.SubtitleDeleteable, error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateSubtitleDeleteFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateSubtitleDeleteFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.SubtitleDeleteable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.SubtitleDeleteable), nil
 }
 // Put add or replace a subtitle for a specific language using API key authentication
 // returns a Subtitleable when successful
-func (m *ItemSubtitlesWithLang_codeItemRequestBuilder) Put(ctx context.Context, body ItemSubtitlesItemWithLang_codePutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Subtitleable, error) {
+func (m *ItemSubtitlesWithLang_codeItemRequestBuilder) Put(ctx context.Context, body ItemSubtitlesItemWithLang_codePutRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Subtitleable, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateSubtitleFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateSubtitleFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Subtitleable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Subtitleable), nil
 }
 // ToDeleteRequestInformation remove a subtitle for a specific language using API key authentication
 // returns a *RequestInformation when successful

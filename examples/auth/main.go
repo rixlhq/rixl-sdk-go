@@ -20,7 +20,7 @@ import (
 	"github.com/microsoft/kiota-abstractions-go/authentication"
 	kiotahttp "github.com/microsoft/kiota-http-go"
 
-	"github.com/qeeqez/rixl-sdk-go/sdk"
+	"github.com/rixlhq/sdk-go/sdk"
 )
 
 // headerAuth sends a fixed header on every request. Swap in for Kiota's

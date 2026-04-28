@@ -10,7 +10,7 @@ import (
 	abs "github.com/microsoft/kiota-abstractions-go"
 	kiotahttp "github.com/microsoft/kiota-http-go"
 
-	"github.com/qeeqez/rixl-sdk-go/sdk"
+	"github.com/rixlhq/sdk-go/sdk"
 )
 
 type apiKeyAuth struct{ key string }

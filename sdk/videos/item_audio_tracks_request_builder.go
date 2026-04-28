@@ -6,14 +6,14 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
 )
 
 // ItemAudioTracksRequestBuilder builds and executes requests for operations under \videos\{videoId}\audio-tracks
 type ItemAudioTracksRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ByLang_code gets an item from the github.com/qeeqez/rixl-sdk-go/sdk.videos.item.audioTracks.item collection
+// ByLang_code gets an item from the github.com/rixlhq/sdk-go/sdk.videos.item.audioTracks.item collection
 // returns a *ItemAudioTracksWithLang_codeItemRequestBuilder when successful
 func (m *ItemAudioTracksRequestBuilder) ByLang_code(lang_code string)(*ItemAudioTracksWithLang_codeItemRequestBuilder) {
     urlTplParams := make(map[string]string)
@@ -40,19 +40,19 @@ func NewItemAudioTracksRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 }
 // Delete remove all additional audio tracks from a video using API key authentication
 // returns a AudioTrackDeleteable when successful
-func (m *ItemAudioTracksRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackDeleteable, error) {
+func (m *ItemAudioTracksRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackDeleteable, error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateAudioTrackDeleteFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateAudioTrackDeleteFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.AudioTrackDeleteable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.AudioTrackDeleteable), nil
 }
 // ToDeleteRequestInformation remove all additional audio tracks from a video using API key authentication
 // returns a *RequestInformation when successful

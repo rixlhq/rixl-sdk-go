@@ -6,7 +6,7 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i93a2fc7b746307f11384a94fb8afc14b96338bd3bd006df1d2f73b594d99268e "github.com/qeeqez/rixl-sdk-go/sdk/models/internal_videos_handler_subtitles"
+    i14c1aa900e4320bbc3246d488d9c4da70829934f11cfe18376f0e3789cdfc0d1 "github.com/rixlhq/sdk-go/sdk/models/internal_videos_handler_subtitles"
 )
 
 // LanguagesRequestBuilder builds and executes requests for operations under \videos\languages
@@ -28,19 +28,19 @@ func NewLanguagesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 }
 // Get get list of supported languages for subtitles
 // returns a []LanguageResponseable when successful
-func (m *LanguagesRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i93a2fc7b746307f11384a94fb8afc14b96338bd3bd006df1d2f73b594d99268e.LanguageResponseable, error) {
+func (m *LanguagesRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i14c1aa900e4320bbc3246d488d9c4da70829934f11cfe18376f0e3789cdfc0d1.LanguageResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i93a2fc7b746307f11384a94fb8afc14b96338bd3bd006df1d2f73b594d99268e.CreateLanguageResponseFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i14c1aa900e4320bbc3246d488d9c4da70829934f11cfe18376f0e3789cdfc0d1.CreateLanguageResponseFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
-    val := make([]i93a2fc7b746307f11384a94fb8afc14b96338bd3bd006df1d2f73b594d99268e.LanguageResponseable, len(res))
+    val := make([]i14c1aa900e4320bbc3246d488d9c4da70829934f11cfe18376f0e3789cdfc0d1.LanguageResponseable, len(res))
     for i, v := range res {
         if v != nil {
-            val[i] = v.(i93a2fc7b746307f11384a94fb8afc14b96338bd3bd006df1d2f73b594d99268e.LanguageResponseable)
+            val[i] = v.(i14c1aa900e4320bbc3246d488d9c4da70829934f11cfe18376f0e3789cdfc0d1.LanguageResponseable)
         }
     }
     return val, nil

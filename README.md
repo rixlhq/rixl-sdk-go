@@ -2,8 +2,8 @@
 
 The official Go client for the [RIXL](https://rixl.com) API.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/qeeqez/rixl-sdk-go.svg)](https://pkg.go.dev/github.com/qeeqez/rixl-sdk-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/qeeqez/rixl-sdk-go)](https://goreportcard.com/report/github.com/qeeqez/rixl-sdk-go)
+[![Go Reference](https://pkg.go.dev/badge/github.com/rixlhq/sdk-go.svg)](https://pkg.go.dev/github.com/rixlhq/sdk-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rixlhq/sdk-go)](https://goreportcard.com/report/github.com/rixlhq/sdk-go)
 
 [Installation](#installation) • [Quick start](#quick-start) • [Authentication](#authentication) • [Resources](#resources) • [Pagination](#pagination) • [Errors](#errors)
 
@@ -23,7 +23,7 @@ The official Go client for the [RIXL](https://rixl.com) API.
 ## Installation
 
 ```bash
-go get github.com/qeeqez/rixl-sdk-go
+go get github.com/rixlhq/sdk-go
 go get github.com/microsoft/kiota-http-go
 go get github.com/microsoft/kiota-abstractions-go
 ```
@@ -39,7 +39,7 @@ import (
 
     "github.com/microsoft/kiota-abstractions-go/authentication"
     kiotahttp "github.com/microsoft/kiota-http-go"
-    "github.com/qeeqez/rixl-sdk-go/sdk"
+    "github.com/rixlhq/sdk-go/sdk"
 )
 
 func main() {
@@ -101,7 +101,7 @@ err = client.Images().ByImageId("PS5IMKoFLm").Delete(ctx, nil)
 import (
     "bytes"
     "net/http"
-    imghandler "github.com/qeeqez/rixl-sdk-go/sdk/models/internal_images_handler"
+    imghandler "github.com/rixlhq/sdk-go/sdk/models/internal_images_handler"
 )
 
 initReq := imghandler.NewUploadInitRequest()
@@ -141,8 +141,8 @@ tracks, err := client.Videos().ByVideoId("VI9VXQxWXQ").Subtitles().Get(ctx, nil)
 
 // Upload (init returns presigned URLs for both the video and a poster image)
 import (
-    "github.com/qeeqez/rixl-sdk-go/sdk/models"
-    vidupload "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_videos_handler_upload"
+    "github.com/rixlhq/sdk-go/sdk/models"
+    vidupload "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_videos_handler_upload"
 )
 
 initReq := models.NewVideoUploadInitRequest()
@@ -166,7 +166,7 @@ List endpoints accept `limit`, `offset`, `sort`, and `order`:
 ```go
 import (
     kabs "github.com/microsoft/kiota-abstractions-go"
-    "github.com/qeeqez/rixl-sdk-go/sdk/images"
+    "github.com/rixlhq/sdk-go/sdk/images"
 )
 
 limit, offset := int32(50), int32(0)
@@ -197,7 +197,7 @@ API errors (400, 401, 403, 404, 500) are returned as `*ErrorResponse`:
 ```go
 import (
     "errors"
-    apierr "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
+    apierr "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
 )
 
 image, err := client.Images().ByImageId("PS5IMKoFLm").Get(ctx, nil)
@@ -212,16 +212,16 @@ if err != nil {
 
 ## Models
 
-Generated types live under `github.com/qeeqez/rixl-sdk-go/sdk/models/`:
+Generated types live under `github.com/rixlhq/sdk-go/sdk/models/`:
 
 | Package | Contents |
 |---------|----------|
 | `models` | `Imageable`, `Videoable`, `Postable`, `Fileable` |
 | `models/pagination` | `PaginatedResponseImageable`, `PaginatedResponseVideoable`, `PaginatedResponsePostable` |
 | `models/internal_images_handler` | Upload request and response payloads for images |
-| `models/github_com_qeeqez_api_internal_videos_handler_upload` | Upload request and response payloads for videos |
+| `models/github_com_rixlhq_api_internal_videos_handler_upload` | Upload request and response payloads for videos |
 | `models/internal_videos_handler_subtitles` | Subtitle PUT payloads |
-| `models/github_com_qeeqez_api_internal_errors` | `ErrorResponse` |
+| `models/github_com_rixlhq_api_internal_errors` | `ErrorResponse` |
 
 Getters return pointers; dereference before use.
 
@@ -263,4 +263,4 @@ go run ./auth                                 # works with either credential typ
 
 ## Support
 
-Open an issue at [github.com/qeeqez/rixl-sdk-go](https://github.com/qeeqez/rixl-sdk-go/issues).
+Open an issue at [github.com/rixlhq/sdk-go](https://github.com/rixlhq/sdk-go/issues).

@@ -1,11 +1,11 @@
-module github.com/qeeqez/rixl-sdk-go/examples
+module github.com/rixlhq/sdk-go/examples
 
 go 1.26.1
 
 require (
 	github.com/microsoft/kiota-abstractions-go v1.9.4
 	github.com/microsoft/kiota-http-go v1.5.2
-	github.com/qeeqez/rixl-sdk-go v0.0.0-00010101000000-000000000000
+	github.com/rixlhq/sdk-go v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -23,4 +23,4 @@ require (
 	go.opentelemetry.io/otel/trace v1.35.0 // indirect
 )
 
-replace github.com/qeeqez/rixl-sdk-go => ../
+replace github.com/rixlhq/sdk-go => ../

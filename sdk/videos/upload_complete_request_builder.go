@@ -6,9 +6,9 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed "github.com/qeeqez/rixl-sdk-go/sdk/models"
-    i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
-    i5dd72f9cda3c8a2658be427bb31b4f89bc7ee9ab742ea6a5b366e00ab3ab72a1 "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_videos_handler_upload"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    ia26ef189ba46ca11d5f1702cfeae312f09fd90d0dd3e182a9b7c583f74be1fa5 "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_videos_handler_upload"
 )
 
 // UploadCompleteRequestBuilder builds and executes requests for operations under \videos\upload\complete
@@ -35,30 +35,30 @@ func NewUploadCompleteRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
 // returns a ErrorResponse error when the service returns a 403 status code
 // returns a ErrorResponse error when the service returns a 404 status code
 // returns a ErrorResponse error when the service returns a 500 status code
-func (m *UploadCompleteRequestBuilder) Post(ctx context.Context, body i5dd72f9cda3c8a2658be427bb31b4f89bc7ee9ab742ea6a5b366e00ab3ab72a1.CompleteRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable, error) {
+func (m *UploadCompleteRequestBuilder) Post(ctx context.Context, body ia26ef189ba46ca11d5f1702cfeae312f09fd90d0dd3e182a9b7c583f74be1fa5.CompleteRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "401": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "403": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "404": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "500": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
+        "400": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "401": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "403": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "404": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "500": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.CreateVideoFromDiscriminatorValue, errorMapping)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.CreateVideoFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(i6a8119714aaa1c348f0ce22bc9a01a8501620888990eb654e94c882e51a080ed.Videoable), nil
+    return res.(i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7.Videoable), nil
 }
 // ToPostRequestInformation mark a video upload as complete after successful upload to storage using API key authentication
 // returns a *RequestInformation when successful
-func (m *UploadCompleteRequestBuilder) ToPostRequestInformation(ctx context.Context, body i5dd72f9cda3c8a2658be427bb31b4f89bc7ee9ab742ea6a5b366e00ab3ab72a1.CompleteRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *UploadCompleteRequestBuilder) ToPostRequestInformation(ctx context.Context, body ia26ef189ba46ca11d5f1702cfeae312f09fd90d0dd3e182a9b7c583f74be1fa5.CompleteRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
     requestInfo.Headers.TryAdd("Accept", "application/json")

@@ -6,8 +6,8 @@ package images
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf "github.com/qeeqez/rixl-sdk-go/sdk/models/github_com_qeeqez_api_internal_errors"
-    if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe "github.com/qeeqez/rixl-sdk-go/sdk/models/internal_images_handler"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac "github.com/rixlhq/sdk-go/sdk/models/internal_images_handler"
 )
 
 // UploadInitRequestBuilder builds and executes requests for operations under \images\upload\init
@@ -33,29 +33,29 @@ func NewUploadInitRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
 // returns a ErrorResponse error when the service returns a 401 status code
 // returns a ErrorResponse error when the service returns a 403 status code
 // returns a ErrorResponse error when the service returns a 500 status code
-func (m *UploadInitRequestBuilder) Post(ctx context.Context, body if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe.UploadInitRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe.InitResponseable, error) {
+func (m *UploadInitRequestBuilder) Post(ctx context.Context, body if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac.UploadInitRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac.InitResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "401": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "403": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
-        "500": i12d92dc73d2e9d2b13e50efdbdccd7b0eea209aa4e481b751aa14da12b59bebf.CreateErrorResponseFromDiscriminatorValue,
+        "400": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "401": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "403": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
+        "500": i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d.CreateErrorResponseFromDiscriminatorValue,
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe.CreateInitResponseFromDiscriminatorValue, errorMapping)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac.CreateInitResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe.InitResponseable), nil
+    return res.(if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac.InitResponseable), nil
 }
 // ToPostRequestInformation initialize a presigned URL upload for an image file using API key authentication
 // returns a *RequestInformation when successful
-func (m *UploadInitRequestBuilder) ToPostRequestInformation(ctx context.Context, body if9a909dbe8ec9c35062d6bc56823af67a8acd2a3aa506f58ce67cfbc094257fe.UploadInitRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *UploadInitRequestBuilder) ToPostRequestInformation(ctx context.Context, body if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac.UploadInitRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
     requestInfo.Headers.TryAdd("Accept", "application/json")
