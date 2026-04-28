@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    uses: rixlhq/github-actions/.github/workflows/release.yml@v1.9.5
+    with:
+      config-file: release-please-config.json
+      manifest-file: .release-please-manifest.json
+    secrets: inherit
+
+  # pkg.go.dev indexes new versions on demand. Hitting the module proxy
+  # right after a tag lands gets the docs page online quickly.
+  pkggodev:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warm pkg.go.dev
+        run: |
+          tag='${{ needs.release-please.outputs.tag_name }}'
+          curl -fSL "https://proxy.golang.org/github.com/rixlhq/sdk-go/@v/${tag}.info" || true
