@@ -15,7 +15,7 @@ jobs:
       releases_created: ${{ steps.release.outputs.releases_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: googleapis/release-please-action@v1.9.5
+      - uses: googleapis/release-please-action@v4
         id: release
         with:
           config-file: release-please-config.json
@@ -29,4 +29,5 @@ jobs:
       - name: Warm pkg.go.dev
         run: |
           tag='${{ needs.release-please.outputs.tag_name }}'
-          curl -fSL "https://proxy.golang.org/github.com/rixlhq/rixl-go/@v/${tag}.info" || true
+          # Use go list -m to properly notify the proxy
+          GOPROXY=proxy.golang.org go list -m github.com/rixlhq/rixl-go@${tag}
