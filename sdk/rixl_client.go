@@ -10,9 +10,9 @@ import (
     i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426 "github.com/microsoft/kiota-serialization-multipart-go"
     i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83 "github.com/microsoft/kiota-serialization-text-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
-    i92d11b1be5e1a219826558d618aa13b99bc39b363f84d44c8fae21cfe62a9c2a "github.com/rixlhq/sdk-go/sdk/videos"
-    ib4c772508aeee354f1c716370b53652066e5d9f2b538c24beb19195da586f678 "github.com/rixlhq/sdk-go/sdk/feeds"
-    iba494b443f34f4e89867800c46fdc1fe53488f5207fe8b64bd5d153d81836a09 "github.com/rixlhq/sdk-go/sdk/images"
+    i92d11b1be5e1a219826558d618aa13b99bc39b363f84d44c8fae21cfe62a9c2a "github.com/rixlhq/rixl-go/sdk/videos"
+    ib4c772508aeee354f1c716370b53652066e5d9f2b538c24beb19195da586f678 "github.com/rixlhq/rixl-go/sdk/feeds"
+    iba494b443f34f4e89867800c46fdc1fe53488f5207fe8b64bd5d153d81836a09 "github.com/rixlhq/rixl-go/sdk/images"
 )
 
 // RixlClient the main entry point of the SDK, exposes the configuration and the fluent API.

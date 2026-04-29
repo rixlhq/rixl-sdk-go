@@ -6,7 +6,7 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/rixl-go/sdk/models"
 )
 
 // ItemSubtitlesWithLang_codeItemRequestBuilder builds and executes requests for operations under \videos\{videoId}\subtitles\{lang_code}

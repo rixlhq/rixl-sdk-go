@@ -6,8 +6,8 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
-    if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf "github.com/rixlhq/sdk-go/sdk/models/pagination"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/rixl-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    if5fe6ebdb5303685c58216888d4b27c57bfc171364b5f0d7459d0af798f20bbf "github.com/rixlhq/rixl-go/sdk/models/pagination"
 )
 
 // VideosRequestBuilder builds and executes requests for operations under \videos
@@ -25,7 +25,7 @@ type VideosRequestBuilderGetQueryParameters struct {
     // Field to sort by (created_at, name, size, updated_at, duration)
     Sort *string `uriparametername:"sort"`
 }
-// ByVideoId gets an item from the github.com/rixlhq/sdk-go/sdk.videos.item collection
+// ByVideoId gets an item from the github.com/rixlhq/rixl-go/sdk.videos.item collection
 // returns a *WithVideoItemRequestBuilder when successful
 func (m *VideosRequestBuilder) ByVideoId(videoId string)(*WithVideoItemRequestBuilder) {
     urlTplParams := make(map[string]string)

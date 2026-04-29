@@ -6,8 +6,8 @@ package images
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
-    if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac "github.com/rixlhq/sdk-go/sdk/models/internal_images_handler"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/rixl-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    if375031b6f3fea30e67f060684551de9b8061c0064e76864bc42aad16d00ceac "github.com/rixlhq/rixl-go/sdk/models/internal_images_handler"
 )
 
 // UploadInitRequestBuilder builds and executes requests for operations under \images\upload\init

@@ -11,7 +11,7 @@ import (
 type ItemCreatorsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ByCreatorId gets an item from the github.com/rixlhq/sdk-go/sdk.feeds.item.creators.item collection
+// ByCreatorId gets an item from the github.com/rixlhq/rixl-go/sdk.feeds.item.creators.item collection
 // returns a *ItemCreatorsWithCreatorItemRequestBuilder when successful
 func (m *ItemCreatorsRequestBuilder) ByCreatorId(creatorId string)(*ItemCreatorsWithCreatorItemRequestBuilder) {
     urlTplParams := make(map[string]string)

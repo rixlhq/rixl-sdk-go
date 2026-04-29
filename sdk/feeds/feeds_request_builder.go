@@ -11,7 +11,7 @@ import (
 type FeedsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ByFeedId gets an item from the github.com/rixlhq/sdk-go/sdk.feeds.item collection
+// ByFeedId gets an item from the github.com/rixlhq/rixl-go/sdk.feeds.item collection
 // returns a *WithFeedItemRequestBuilder when successful
 func (m *FeedsRequestBuilder) ByFeedId(feedId string)(*WithFeedItemRequestBuilder) {
     urlTplParams := make(map[string]string)

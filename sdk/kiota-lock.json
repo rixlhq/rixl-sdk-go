@@ -5,7 +5,7 @@
   "kiotaVersion": "1.30.0",
   "clientClassName": "RixlClient",
   "typeAccessModifier": "Public",
-  "clientNamespaceName": "github.com/rixlhq/sdk-go/sdk",
+  "clientNamespaceName": "github.com/rixlhq/rixl-go/sdk",
   "language": "Go",
   "usesBackingStore": false,
   "excludeBackwardCompatible": true,

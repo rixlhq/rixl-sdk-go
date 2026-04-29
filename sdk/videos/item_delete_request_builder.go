@@ -6,7 +6,7 @@ package videos
 import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_internal_errors"
+    i90c0e1ee53825fe36252e17a45e5d3b5f64ca0be4b2c3a2284950d3439c0ff4d "github.com/rixlhq/rixl-go/sdk/models/github_com_rixlhq_api_internal_errors"
 )
 
 // ItemDeleteRequestBuilder builds and executes requests for operations under \videos\{videoId}\delete

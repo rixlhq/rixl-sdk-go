@@ -29,4 +29,4 @@ jobs:
       - name: Warm pkg.go.dev
         run: |
           tag='${{ needs.release-please.outputs.tag_name }}'
-          curl -fSL "https://proxy.golang.org/github.com/rixlhq/sdk-go/@v/${tag}.info" || true
+          curl -fSL "https://proxy.golang.org/github.com/rixlhq/rixl-go/@v/${tag}.info" || true

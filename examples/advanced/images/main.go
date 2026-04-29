@@ -17,8 +17,8 @@ import (
 	abs "github.com/microsoft/kiota-abstractions-go"
 	kiotahttp "github.com/microsoft/kiota-http-go"
 
-	"github.com/rixlhq/sdk-go/sdk"
-	imghandler "github.com/rixlhq/sdk-go/sdk/models/internal_images_handler"
+	"github.com/rixlhq/rixl-go/sdk"
+	imghandler "github.com/rixlhq/rixl-go/sdk/models/internal_images_handler"
 )
 
 const sampleImageURL = "https://picsum.photos/seed/rixl/800/600.jpg"

@@ -5,8 +5,8 @@ package github_com_rixlhq_api_internal_videos
 
 import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
-    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/sdk-go/sdk/models"
-    idd5d23568b1954ed5a4e987f05d5cdb6343f855566c6a9b4f10e785a3a6d4a0f "github.com/rixlhq/sdk-go/sdk/models/github_com_rixlhq_api_db_sqlc"
+    i5a0295206944821724fb175c9e7dc344b4d3a2abb6a77c9137ef720d4ea98bf7 "github.com/rixlhq/rixl-go/sdk/models"
+    idd5d23568b1954ed5a4e987f05d5cdb6343f855566c6a9b4f10e785a3a6d4a0f "github.com/rixlhq/rixl-go/sdk/models/github_com_rixlhq_api_db_sqlc"
 )
 
 type VideoResponse struct {

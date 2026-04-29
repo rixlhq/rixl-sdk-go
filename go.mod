@@ -1,4 +1,4 @@
-module github.com/rixlhq/sdk-go
+module github.com/rixlhq/rixl-go
 
 go 1.26.1
 
