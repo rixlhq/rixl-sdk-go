@@ -3,7 +3,8 @@
     "packages": {
         ".": {
             "release-type": "go",
-            "package-name": "rixl-go"
+            "package-name": "rixl-go",
+            "include-component-in-tag": false
         }
     }
 }
