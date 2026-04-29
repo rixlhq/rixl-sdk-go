@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/rixlhq/rixl-go/compare/v0.3.0...v0.3.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* upgrade actions to avoid node 20 deprecation ([49c9788](https://github.com/rixlhq/rixl-go/commit/49c97883eae9f09788305f8e7f0248f59ffd2345))
+
 ## [0.3.0](https://github.com/rixlhq/rixl-go/compare/v0.2.0...v0.3.0) (2026-04-29)
 
 
