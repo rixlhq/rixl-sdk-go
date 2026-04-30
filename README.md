@@ -1,32 +1,18 @@
-# RIXL Go SDK
+# rixl-go
 
-The official Go client for the [RIXL](https://rixl.com) API.
+Go client for the [RIXL](https://rixl.com) API.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/rixlhq/rixl-go.svg)](https://pkg.go.dev/github.com/rixlhq/rixl-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/rixlhq/rixl-go)](https://goreportcard.com/report/github.com/rixlhq/rixl-go)
 
-[Installation](#installation) • [Quick start](#quick-start) • [Authentication](#authentication) • [Resources](#resources) • [Pagination](#pagination) • [Errors](#errors)
-
-## Features
-
-- Typed fluent API generated from the RIXL OpenAPI spec
-- `context.Context` on every request — deadlines and cancellation built in
-- Pre-mapped error responses for 400, 401, 403, 404, and 500
-- Pluggable `RequestAdapter` and authentication providers
-- Support for JSON, form, multipart, and plain-text payloads
-
-## Requirements
-
-- Go 1.22+
-- A RIXL API key
-
-## Installation
+## Install
 
 ```bash
 go get github.com/rixlhq/rixl-go
 go get github.com/microsoft/kiota-http-go
 go get github.com/microsoft/kiota-abstractions-go
 ```
+
+Requires Go 1.22+.
 
 ## Quick start
 
@@ -57,26 +43,27 @@ func main() {
 }
 ```
 
-Base URL defaults to `https://api.rixl.com`. Override with `adapter.SetBaseUrl("...")`.
+Default base URL: `https://api.rixl.com`. Override with `adapter.SetBaseUrl(...)`.
 
 ## Authentication
+
+API key:
 
 ```go
 import "github.com/microsoft/kiota-abstractions-go/authentication"
 
-// API key in a header
 auth, _ := authentication.NewApiKeyAuthenticationProvider(
     "YOUR_RIXL_API_KEY", "X-API-Key", authentication.HEADER_KEYLOCATION,
 )
-
-// Bearer token
-// Implement authentication.AccessTokenProvider, then:
-// auth, _ := authentication.NewBaseBearerTokenAuthenticationProvider(tokenProvider)
 ```
 
-## Resources
+Bearer token (implement `AccessTokenProvider`):
 
-### Feeds
+```go
+auth, _ := authentication.NewBaseBearerTokenAuthenticationProvider(tokenProvider)
+```
+
+## Feeds
 
 ```go
 posts, err := client.Feeds().ByFeedId("FD4y3QB38S").Get(ctx, nil)
@@ -85,24 +72,18 @@ for _, post := range posts.GetData() {
 }
 ```
 
-### Images
+## Images
 
 ```go
-// List
 page, err := client.Images().Get(ctx, nil)
-
-// Get
 image, err := client.Images().ByImageId("PS5IMKoFLm").Get(ctx, nil)
-
-// Delete
 err = client.Images().ByImageId("PS5IMKoFLm").Delete(ctx, nil)
+```
 
-// Upload (init → PUT bytes to presigned URL → complete)
-import (
-    "bytes"
-    "net/http"
-    imghandler "github.com/rixlhq/rixl-go/sdk/models/internal_images_handler"
-)
+Upload (init → PUT bytes → complete):
+
+```go
+import imghandler "github.com/rixlhq/rixl-go/sdk/models/internal_images_handler"
 
 initReq := imghandler.NewUploadInitRequest()
 name, format := "photo.jpg", "jpeg"
@@ -110,16 +91,8 @@ initReq.SetName(&name)
 initReq.SetFormat(&format)
 
 initRes, err := client.Images().Upload().Init().Post(ctx, initReq, nil)
-// initRes.GetImageId(), initRes.GetPresignedUrl()
+// PUT bytes to *initRes.GetPresignedUrl()
 
-// Upload the raw bytes to the presigned URL with a standard HTTP client.
-req, _ := http.NewRequestWithContext(ctx, http.MethodPut,
-    *initRes.GetPresignedUrl(), bytes.NewReader(imageBytes))
-req.Header.Set("Content-Type", "image/jpeg")
-req.ContentLength = int64(len(imageBytes))
-http.DefaultClient.Do(req)
-
-// Finalize.
 completeReq := imghandler.NewCompleteRequest()
 completeReq.SetImageId(initRes.GetImageId())
 attached := false
@@ -127,19 +100,17 @@ completeReq.SetAttachedToVideo(&attached)
 image, err := client.Images().Upload().Complete().Post(ctx, completeReq, nil)
 ```
 
-### Videos
+## Videos
 
 ```go
-// List
 videos, err := client.Videos().Get(ctx, nil)
-
-// Get
 video, err := client.Videos().ByVideoId("VI9VXQxWXQ").Get(ctx, nil)
-
-// Subtitle tracks
 tracks, err := client.Videos().ByVideoId("VI9VXQxWXQ").Subtitles().Get(ctx, nil)
+```
 
-// Upload (init returns presigned URLs for both the video and a poster image)
+Upload returns presigned URLs for both the video and a poster image:
+
+```go
 import (
     "github.com/rixlhq/rixl-go/sdk/models"
     vidupload "github.com/rixlhq/rixl-go/sdk/models/github_com_rixlhq_api_internal_videos_handler_upload"
@@ -151,8 +122,7 @@ initReq.SetFileName(&fileName)
 initReq.SetImageFormat(&posterFormat)
 
 initRes, err := client.Videos().Upload().Init().Post(ctx, initReq, nil)
-// PUT video bytes to *initRes.GetVideoPresignedUrl()
-// PUT poster bytes to *initRes.GetPosterPresignedUrl()
+// PUT to initRes.GetVideoPresignedUrl() and initRes.GetPosterPresignedUrl()
 
 completeReq := vidupload.NewCompleteRequest()
 completeReq.SetVideoId(initRes.GetVideoId())
@@ -161,7 +131,7 @@ video, err := client.Videos().Upload().Complete().Post(ctx, completeReq, nil)
 
 ## Pagination
 
-List endpoints accept `limit`, `offset`, `sort`, and `order`:
+List endpoints take `limit`, `offset`, `sort`, `order`:
 
 ```go
 import (
@@ -171,17 +141,14 @@ import (
 
 limit, offset := int32(50), int32(0)
 for {
-    config := &kabs.RequestConfiguration[images.ImagesRequestBuilderGetQueryParameters]{
+    cfg := &kabs.RequestConfiguration[images.ImagesRequestBuilderGetQueryParameters]{
         QueryParameters: &images.ImagesRequestBuilderGetQueryParameters{
             Limit: &limit, Offset: &offset,
         },
     }
-    page, err := client.Images().Get(ctx, config)
+    page, err := client.Images().Get(ctx, cfg)
     if err != nil {
         return err
-    }
-    for _, img := range page.GetData() {
-        // ...
     }
     if offset+int32(len(page.GetData())) >= *page.GetPagination().GetTotal() {
         break
@@ -192,7 +159,7 @@ for {
 
 ## Errors
 
-API errors (400, 401, 403, 404, 500) are returned as `*ErrorResponse`:
+API errors come back as `*ErrorResponse`:
 
 ```go
 import (
@@ -210,57 +177,16 @@ if err != nil {
 }
 ```
 
-## Models
-
-Generated types live under `github.com/rixlhq/rixl-go/sdk/models/`:
-
-| Package | Contents |
-|---------|----------|
-| `models` | `Imageable`, `Videoable`, `Postable`, `Fileable` |
-| `models/pagination` | `PaginatedResponseImageable`, `PaginatedResponseVideoable`, `PaginatedResponsePostable` |
-| `models/internal_images_handler` | Upload request and response payloads for images |
-| `models/github_com_rixlhq_api_internal_videos_handler_upload` | Upload request and response payloads for videos |
-| `models/internal_videos_handler_subtitles` | Subtitle PUT payloads |
-| `models/github_com_rixlhq_api_internal_errors` | `ErrorResponse` |
-
-Getters return pointers; dereference before use.
-
-## Context
-
-Every request takes `context.Context` as its first argument:
-
-```go
-ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-defer cancel()
-
-image, err := client.Images().ByImageId("PS5IMKoFLm").Get(ctx, nil)
-```
-
 ## Examples
 
-Self-contained demos live in [`examples/`](./examples). Each file imports the SDK and runs one task — copy any of them into your own project as a starting point.
-
-| Path | What it shows |
-|---|---|
-| `auth/` | both auth flows in one file — picks API key or client JWT from env |
-| `basic/images/` | list images, fetch one by `IMAGE_ID` |
-| `basic/videos/` | list videos, fetch one by `VIDEO_ID` |
-| `basic/feeds/` | read a feed — needs `RIXL_FEED_ID` |
-| `basic/posts/` | read one post — needs `RIXL_FEED_ID` and `RIXL_POST_ID` |
-| `advanced/images/` | full image upload (init → PUT → complete) |
-| `advanced/videos/` | full video upload (video + poster) |
-
-Credentials come from the RIXL dashboard (API key, or Client Auth → Create credential).
+Runnable demos in [examples/](./examples):
 
 ```bash
-export RIXL_API_KEY=<copied from the dashboard>
-export RIXL_BASE_URL=http://localhost:8081   # optional; defaults to api.rixl.com
-cd examples
-go run ./basic/images
-go run ./advanced/videos
-go run ./auth                                 # works with either credential type
+export RIXL_API_KEY=<key>
+go run ./examples/basic/images
+go run ./examples/advanced/videos
 ```
 
-## Support
+## Issues
 
-Open an issue at [github.com/rixlhq/rixl-go](https://github.com/rixlhq/rixl-go/issues).
+[github.com/rixlhq/rixl-go/issues](https://github.com/rixlhq/rixl-go/issues)
