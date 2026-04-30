@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/rixlhq/rixl-go/compare/v0.3.2...v0.3.3) (2026-04-30)
+
+
+### Bug Fixes
+
+* force sequential patch bumps in pre-1.0 ([fa9b23b](https://github.com/rixlhq/rixl-go/commit/fa9b23b5547d0ebff444639ddb315bfd7f77cb5c))
+
 ## [0.3.2](https://github.com/rixlhq/rixl-go/compare/v0.3.1...v0.3.2) (2026-04-29)
 
 
